@@ -12,9 +12,6 @@ var Game = function() {
 
 	this.question = () => {
 
-
-		let scene = document.querySelector('#scene');
-
 		for (let i = 0; i < questions[this.step].choices.length; i++) {
 
 			let position = this.position();
@@ -39,8 +36,16 @@ var Game = function() {
 	this.getRand = (min, max) => {
     	return Math.round(Math.random() * (max - min) + min);
 	}
-
 }
 
-var game = new Game();
-setTimeout(game.init, 3000);
+window.onload = function() { 
+
+	var game = new Game();
+	let scene = document.querySelector('#scene');
+
+	if (scene.hasLoaded) {
+		game.init();
+	} else {
+		scene.addEventListener('loaded', game.init);
+	}
+}
