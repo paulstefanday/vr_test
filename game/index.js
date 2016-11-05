@@ -22,7 +22,7 @@ var Game = function() {
 
 		for (let i = 0; i < questions[this.step].choices.length; i++) {
 			this.choice(questions[this.step].choices[i]);
-    	}
+    }
 
 
 	}
@@ -33,7 +33,7 @@ var Game = function() {
 		let position = this.position();
 		let rotation = this.rotation(position);
 		let scene = document.querySelector('#elements');
-		
+
 		let entity = yo`
 			<a-entity flapping>
 				<a-entity clicked obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" data-choice="${choice}" position="${position.x} ${position.y} ${position.z}" scale="0 0 0" rotation="${rotation.x} ${rotation.y} ${rotation.z}" sound="src: #sound-eat; on: click">
@@ -64,7 +64,7 @@ var Game = function() {
 		scene.appendChild(timer);
 
 		setTimeout(function() {
-			
+
 			this.result();
 		}, this.duration + 2000);
 	}
@@ -77,6 +77,8 @@ var Game = function() {
 		console.log(91919191, value)
 		if(questions[this.step].answer === value) {
 			this.score = this.score++
+
+			// visualise fly
 		}
 		this.step++
 
