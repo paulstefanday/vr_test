@@ -16,10 +16,9 @@ var Game = function() {
 
 			let position = this.position();
 			let rotation = this.rotation(position);
+			let choice =  questions[this.step].choices[i];
 
-			console.log(rotation);
-
-	    	let entity = yo`<a-entity cursor-listener obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="${position.x} ${position.y} ${position.z}" scale="1 1 1" rotation="${rotation.x} ${rotation.y} ${rotation.z}"></a-entity>`;
+	    	let entity = yo`<a-entity cursor-listener obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" data-choice="${choice}" position="${position.x} ${position.y} ${position.z}" scale="1 1 1" rotation="${rotation.x} ${rotation.y} ${rotation.z}"></a-entity>`;
 
 			scene.appendChild(entity)
 			console.log('Added Question');
@@ -30,7 +29,7 @@ var Game = function() {
 	this.position = () => {
 
 		let position = {
-			x: this.getRand(-12, 12), 
+			x: this.getRand(-10, 10), 
 			y: this.getRand(1, 3),
 			z: this.getRand(-2, -12),
 		}
@@ -41,9 +40,9 @@ var Game = function() {
 	this.rotation = (position) => {
 
 		let rotation = {
-			x: 0, 
-			y: position.x * -10,
-			z: 0, 
+			x: this.getRand(-5, 5), 
+			y: position.x * -8,
+			z: this.getRand(-5, 5), 
 		}
 
 		return rotation;

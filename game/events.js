@@ -13,7 +13,10 @@ function leaveAnimation(el) {
 
 AFRAME.registerComponent('cursor-listener', {
   init: function () {
-    this.el.addEventListener('click', function () {
+    this.el.addEventListener('click', function (e) {
+
+      console.log(e.target.getAttribute('data-choice'));
+
       console.log('I was clicked!');
     });
     this.el.addEventListener('mouseenter', function (e) {
