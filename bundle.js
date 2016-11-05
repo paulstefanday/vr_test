@@ -2,7 +2,13 @@
 var yo = require('yo-yo');
 
 function addAnimation(el) {
-  var child = function () {
+
+  var parent = el.parentElement;
+  var choice = el.getAttribute('data-choice');
+
+  console.log('Choice: ' + choice);
+
+  var animation = function () {
 
     var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
     var bel0 = document.createElement("a-animation");
@@ -13,11 +19,20 @@ function addAnimation(el) {
     bel0.setAttribute("repeat", "0");
     return bel0;
   }();
-  el.appendChild(child);
+  //let text = yo`<a-entity material="color: white" text="text: ${choice}; size: 0.3" position="-0.3 0.1 0"></a-entity>`
+  parent.appendChild(animation);
+  //el.appendChild(text)
 }
-
+//
 function leaveAnimation(el) {
-  el.innerHTML = '';
+  console.log(el);
+  // el.innerHTML = ''
+
+  var parent = el.parentElement;
+  var choice = el.getAttribute('data-choice');
+
+  console.log('Choice: ' + choice);
+
   var child = function () {
 
     var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
@@ -29,17 +44,16 @@ function leaveAnimation(el) {
     bel0.setAttribute("repeat", "0");
     return bel0;
   }();
-  el.appendChild(child);
+  //let text = yo`<a-entity material="color: white" text="text: ${choice}; size: 0.3" position="-0.3 0.1 0"></a-entity>`
+  parent.appendChild(child);
+  //el.appendChild(text)
 }
 
 AFRAME.registerComponent('cursor-listener', {
   init: function () {
-    this.el.addEventListener('click', function (e) {
-
-      console.log(e.target.getAttribute('data-choice'));
-
-      console.log('I was clicked!');
-    });
+    // this.el.addEventListener('click', function (e) {
+    //   console.log('I was clicked!', e.target.getAttribute('data-choice'));
+    // });
     this.el.addEventListener('mouseenter', function (e) {
       console.log('Mouse enter!', e.target);
       addAnimation(e.target);
@@ -65,15 +79,20 @@ var Game = function () {
 	var _this = this;
 
 	this.step = 0;
+	this.score = 0;
 
 	this.init = function () {
-
-		_this.question();
+		setTimeout(function () {
+			_this.question();
+		}, 3000);
 	};
 
 	this.question = function () {
 
-		for (var i = 0; i < questions[_this.step].choices.length; i++) {
+		var scene = document.querySelector('#elements');
+		var delay = 500;
+
+		var _loop = function (i) {
 
 			var position = _this.position();
 			var rotation = _this.rotation(position);
@@ -82,19 +101,69 @@ var Game = function () {
 			var entity = function () {
 
 				var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
-				var bel0 = document.createElement("a-entity");
-				bel0.setAttribute("cursor-listener", "cursor-listener");
-				bel0.setAttribute("obj-model", "obj: #fly-b-obj; mtl: #fly-b-mtl");
-				bel0.setAttribute("data-choice", arguments[0]);
-				bel0.setAttribute("position", arguments[1] + " " + arguments[2] + " " + arguments[3]);
-				bel0.setAttribute("scale", "1 1 1");
-				bel0.setAttribute("rotation", arguments[4] + " " + arguments[5] + " " + arguments[6]);
-				return bel0;
-			}(choice, position.x, position.y, position.z, rotation.x, rotation.y, rotation.z);
+				var bel3 = document.createElement("a-entity");
+				bel3.setAttribute("clicked", "clicked");
+				bel3.setAttribute("obj-model", "obj: #fly-b-obj; mtl: #fly-b-mtl");
+				bel3.setAttribute("data-choice", arguments[3]);
+				bel3.setAttribute("position", arguments[4] + " " + arguments[5] + " " + arguments[6]);
+				bel3.setAttribute("scale", "0 0 0");
+				bel3.setAttribute("rotation", arguments[7] + " " + arguments[8] + " " + arguments[9]);
+				var bel0 = document.createElement("a-animation");
+				bel0.setAttribute("attribute", "scale");
+				bel0.setAttribute("dur", "200");
+				bel0.setAttribute("fill", "forwards");
+				bel0.setAttribute("to", "1 1 1");
+				bel0.setAttribute("repeat", "0");
+				var bel1 = document.createElement("a-entity");
+				bel1.setAttribute("data-choice", arguments[0]);
+				bel1.setAttribute("material", "color: white");
+				bel1.setAttribute("text", "text: " + arguments[1] + "; size: 0.24");
+				bel1.setAttribute("position", "-0.2 0.1 0");
+				var bel2 = document.createElement("a-box");
+				bel2.setAttribute("data-choice", arguments[2]);
+				bel2.setAttribute("cursor-listener", "cursor-listener");
+				bel2.setAttribute("opacity", "0");
+				ac(bel3, ["\n\t\t\t\t\t", bel0, "\n\t\t\t\t\t", bel1, "\n\t\t\t\t\t", bel2, "\n\t\t\t"]);
+				return bel3;
+			}(choice, choice, choice, choice, position.x, position.y, position.z, rotation.x, rotation.y, rotation.z);
 
-			scene.appendChild(entity);
+			setTimeout(function () {
+				scene.appendChild(entity);
+			}, delay);
+			delay = delay + 500;
 			console.log('Added Question');
+		};
+
+		for (var i = 0; i < questions[_this.step].choices.length; i++) {
+			_loop(i);
 		}
+	};
+
+	this.answer = function (value) {
+		console.log(91919191, value);
+		if (questions[_this.step].answer === value) {
+			_this.score = _this.score++;
+		}
+		_this.step++;
+
+		// wipe existing answers && load new answers
+		_this.refresh();
+	};
+
+	this.refresh = function () {
+		var delay = 200;
+		$('#elements').children('').each(function () {
+			var _this2 = this;
+
+			setTimeout(function () {
+				return $(_this2).remove();
+			}, delay);
+			delay = delay + 200;
+		});
+
+		setTimeout(function () {
+			return _this.question();
+		}, delay);
 	};
 
 	this.position = function () {
@@ -124,65 +193,74 @@ var Game = function () {
 	};
 };
 
-window.onload = function () {
-
-	var game = new Game();
-	var scene = document.querySelector('#scene');
-
-	if (scene.hasLoaded) {
-		game.init();
-	} else {
-		scene.addEventListener('loaded', game.init);
-	}
-};
+module.exports = Game;
 },{"./questions":3,"/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js":12,"yo-yo":10}],3:[function(require,module,exports){
 module.exports = [{
 	question: "5 x 5",
 	choices: [25, 76, 12, 20, 23],
-	answer: 0
+	answer: 25
 }, {
 	question: "5 x 2",
 	choices: [8, 10, 12, 20, 23],
-	answer: 1
+	answer: 10
 }, {
 	question: "12 x 2",
 	choices: [24, 22, 20, 30, 23],
-	answer: 0
+	answer: 24
 }, {
 	question: "6 x 8",
 	choices: [40, 32, 48, 46, 62],
-	answer: 2
+	answer: 48
 }, {
 	question: "7 x 4",
 	choices: [29, 16, 28, 46, 32],
-	answer: 2
+	answer: 28
 }, {
 	question: "5 x 5",
 	choices: [25, 76, 12, 24, 23],
-	answer: 0
+	answer: 25
 }, {
 	question: "5 x 2",
 	choices: [8, 10, 12, 20, 23],
-	answer: 1
+	answer: 10
 }, {
 	question: "12 x 2",
 	choices: [24, 22, 20, 30, 23],
-	answer: 0
+	answer: 24
 }, {
 	question: "6 x 8",
 	choices: [40, 32, 48, 46, 62],
-	answer: 2
+	answer: 48
 }, {
 	question: "7 x 4",
 	choices: [29, 16, 28, 46, 32],
-	answer: 2
+	answer: 28
 }];
 },{}],4:[function(require,module,exports){
 require('aframe-text-component');
-require('./game/index.js');
+var Game = require('./game/index.js');
 require('./game/events.js');
+var game = new Game();
 
-console.log("hie!!!");
+window.onload = function () {
+
+  var scene = document.querySelector('#scene');
+
+  if (scene.hasLoaded) {
+    game.init();
+  } else {
+    scene.addEventListener('loaded', game.init);
+  }
+};
+
+AFRAME.registerComponent('clicked', {
+  init: function () {
+    this.el.addEventListener('click', function (e) {
+      console.log('I was clicked!', e.target.getAttribute('data-choice'));
+      game.answer(e.target.getAttribute('data-choice'));
+    });
+  }
+});
 },{"./game/events.js":1,"./game/index.js":2,"aframe-text-component":5}],5:[function(require,module,exports){
 /**
  * Text component for A-Frame.
