@@ -13,8 +13,6 @@
 // //   }
 // // });
 
-require('./game/index.js');
-
 AFRAME.registerComponent('cursor-listener', {
   init: function () {
     console.log('cursor initialised')
@@ -44,4 +42,6 @@ AFRAME.registerComponent('cursor-listener', {
     });
   }
 });
+
+require('./game/index.js');
 
