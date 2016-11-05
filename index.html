@@ -9,7 +9,7 @@
     <script src="index.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene id="scene">
       <a-assets>
         <a-asset-item id="frog-obj" src="models/frog.obj"></a-asset-item>
         <a-asset-item id="frog-mtl" src="models/frog.mtl"></a-asset-item>
@@ -38,7 +38,7 @@
       <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -40 0"></a-entity>
 
       <!-- flies -->
-      <a-entity cursor-listener obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="4 2 -10" scale="1 1 1" rotation="0 0 0">
+      <!-- <a-entity cursor-listener obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="4 2 -10" scale="1 1 1" rotation="0 0 0">
 
 
 
@@ -52,7 +52,7 @@
       <a-entity cursor-listener obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="-10 4 -4" scale="1 1 1" rotation="0 0 0"></a-entity>
 
       <a-entity cursor-listener obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="1 1 -3" scale="1 1 1" rotation="0 0 0"></a-entity>
-      <a-entity cursor-listener obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="3 2 -6" scale="1 1 1" rotation="0 0 0"></a-entity>
+      <a-entity cursor-listener obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="3 2 -6" scale="1 1 1" rotation="0 0 0"></a-entity> -->
 
       <a-sky color="#6CCDEF"></a-sky>
     </a-scene>
