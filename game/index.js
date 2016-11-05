@@ -21,17 +21,18 @@ var Game = function() {
 		let questionText = yo`<a-entity position="1 2 -5" material="color: white" text="text: '${questions[this.step].question}'; size: 0.24"></a-entity>`
 		
 		$('#question').append(questionText)
+		let delay = 500
 
 		for (let i = 0; i < questions[this.step].choices.length; i++) {
-			this.choice(questions[this.step].choices[i]);
+			this.choice(questions[this.step].choices[i], delay);
+			delay = delay + 500
     	}
 
 
 	}
 
-	this.choice = (choice) => {
+	this.choice = (choice, delay) => {
 
-		let delay = 500
 		let position = this.position();
 		let rotation = this.rotation(position);
 		let scene = document.querySelector('#elements');
@@ -54,8 +55,6 @@ var Game = function() {
 			setTimeout(function() {
 				scene.appendChild(entity)
 			}, delay);
-
-			delay = delay + 500
 	}
 
 	// Sets Timer
