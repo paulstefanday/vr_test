@@ -6,7 +6,7 @@
   "scripts": {
     "start": "budo index.js --live --verbose --port 3000 --open -- -g yo-yoify",
     "deploy": "ghpages",
-    "ghpages": "ghpages", 
+    "ghpages": "ghpages",
     "build" : "browserify index.js -g yo-yoify -o bundle.js -g es2040"
   },
   "devDependencies": {

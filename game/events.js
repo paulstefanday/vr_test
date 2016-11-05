@@ -27,11 +27,11 @@ AFRAME.registerComponent('cursor-listener', {
     });
     this.el.addEventListener('mouseenter', function (e) {
       console.log('Mouse enter!', e.target);
-      addAnimation(e.target)
+      // addAnimation(e.target)
     });
     this.el.addEventListener('mouseleave', function (e) {
       console.log('Mouse leave!', e.target);
-      leaveAnimation(e.target)
+      // leaveAnimation(e.target)
     });
     this.el.addEventListener('stateadded', function (evt) {
       console.log('state added: ', evt.detail.state);
