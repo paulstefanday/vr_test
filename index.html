@@ -22,6 +22,8 @@
 
         <a-asset-item id="lilypad-main-obj" src="models/lilypad-main.obj"></a-asset-item>
         <a-asset-item id="lilypad-main-mtl" src="models/lilypad-main.mtl"></a-asset-item>
+
+        <a-asset-item id="cloud-obj" src="models/clouds.obj"></a-asset-item>
       </a-assets>
 
 
@@ -30,6 +32,31 @@
       </a-camera>
 
       <a-ocean width="50" depth="50" density="40"></a-ocean>
+
+      <!-- clouds -->
+      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               dur="20000"
+               fill="forwards"
+               to="4000 1000 -2000"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               begin="7000"
+               dur="20000"
+               fill="forwards"
+               to="4000 1000 -2000"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               begin="7000"
+               dur="20000"
+               fill="forwards"
+               to="4000 1000 -2000"
+               repeat="indefinite"></a-animation>
+      </a-entity>
 
       <!-- frog -->
       <a-entity obj-model="obj: #frog-obj; mtl: #frog-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -90 0"></a-entity>
