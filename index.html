@@ -9,7 +9,7 @@
     <script src="index.js"></script>
   </head>
   <body>
-    <a-scene>
+    <a-scene id="scene">
       <a-assets>
         <a-asset-item id="frog-obj" src="models/frog.obj"></a-asset-item>
         <a-asset-item id="frog-mtl" src="models/frog.mtl"></a-asset-item>
@@ -22,40 +22,85 @@
 
         <a-asset-item id="lilypad-main-obj" src="models/lilypad-main.obj"></a-asset-item>
         <a-asset-item id="lilypad-main-mtl" src="models/lilypad-main.mtl"></a-asset-item>
+
+        <a-asset-item id="lilypads-scene-obj" src="models/lilypads-scene.obj"></a-asset-item>
+        <a-asset-item id="lilypads-scene-mtl" src="models/lilypads-scene.mtl"></a-asset-item>
+
+        <a-asset-item id="cloud-obj" src="models/clouds.obj"></a-asset-item>
       </a-assets>
+
+
+      <a-camera>
+        <a-cursor></a-cursor>
+        <a-animation attribute="position"
+               dur="5000"
+               fill="forwards"
+               from="0 1.5 20"
+               to="0 1.5 0"
+               repeat="0"></a-animation>
+      </a-camera>
 
       <a-ocean width="50" depth="50" density="40"></a-ocean>
 
+      <!-- clouds -->
+      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               dur="20000"
+               fill="forwards"
+               to="4000 1000 -2000"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               begin="7000"
+               dur="20000"
+               fill="forwards"
+               to="4000 1000 -2000"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               begin="7000"
+               dur="20000"
+               fill="forwards"
+               to="4000 1000 -2000"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+
       <!-- frog -->
-      <a-entity obj-model="obj: #frog-obj; mtl: #frog-mtl" position="2 0.5 -2" scale="1 1 1" rotation="0 -90 0"></a-entity>
+      <a-entity obj-model="obj: #frog-obj; mtl: #frog-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -90 0"></a-entity>
 
       <!-- lilypad -->
-      <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="2 0.5 -1.4" scale="1 1 1" rotation="0 -40 0"></a-entity>
+      <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -40 0"></a-entity>
+
+      <!-- lilypad scene  -->
+      <a-entity obj-model="obj: #lilypads-scene-obj; mtl: #lilypads-scene-mtl" position="0 0.1 -10" scale="1 1 1" rotation="0 -40 0">
+        <a-animation
+               attribute="position"
+               dur="2000"
+               direction="alternate-reverse"
+               fill="forwards"
+               from="0 0.1 -10"
+               to="0 0.3 -10"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #lilypads-scene-obj; mtl: #lilypads-scene-mtl" position="-15.27 0.1 -14.37" scale="1 1 1" rotation="0 -40 0">
+        <a-animation
+               attribute="position"
+               dur="2000"
+               direction="alternate-reverse"
+               fill="forwards"
+               from="-15.27 0.1 -14.37"
+               to="-15.27 0.3 -14.37"
+               repeat="indefinite"></a-animation>
+      </a-entity>
 
 
       <!-- flies -->
-      <a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="4 2 -10" scale="1 1 1" rotation="0 0 0"></a-entity>
-      <a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="4 3 -10" scale="1 1 1" rotation="0 0 0"></a-entity>
-
-      <a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="-4 1 -8" scale="1 1 1" rotation="0 0 0"></a-entity>
-      <a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="8 2 -12" scale="1 1 1" rotation="0 0 0"></a-entity>
-
-      <a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="15 9 -7" scale="1 1 1" rotation="0 0 0"></a-entity>
-      <a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="-10 4 -9" scale="1 1 1" rotation="0 0 0"></a-entity>
-
-      <a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="1 1 -8" scale="1 1 1" rotation="0 0 0"></a-entity>
-      <a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="3 2 -12" scale="1 1 1" rotation="0 0 0"></a-entity>
-
-
-      <!-- <a-obj-model position="5 0.5 -4" src="models/frog.obj" mtl="models/frog.mtl">
-        <a-animation attribute="position"
-               dur="1000"
-               fill="forwards"
-               to="-1 0.5 -5"
-               repeat="indefinite"></a-animation>
-      </a-obj-model> -->
-
-      <!-- <a-plane position="0 0 -4" rotation="-90 0 0" width="1000" height="1000" color="#48A7C1"></a-plane> -->
+      <!-- <a-entity cursor-listener obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="4 2 -10" scale="1 1 1" rotation="0 0 0"></a-entity>
+      <a-entity cursor-listener obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="4 3 -5" scale="1 1 1" rotation="0 0 0">
+        <a-entity material="color: white" text="text: 12; size: 0.3" position="-0.3 0.1 0"></a-entity>
+      </a-entity> -->
       <a-sky color="#6CCDEF"></a-sky>
     </a-scene>
   </body>
