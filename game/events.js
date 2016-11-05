@@ -52,3 +52,17 @@ AFRAME.registerComponent('cursor-listener', {
     });
   }
 });
+
+
+AFRAME.registerComponent('flyman', {
+  init: function () {
+    let min = 50
+    let max = 250
+    let model = 'a'
+    setInterval(() => {
+      this.el.setAttribute('obj-model',`obj: #fly-${model}-obj; mtl: #fly-${model}-mtl`)
+      if(model === 'a') model = 'b'
+      else model = 'a'
+    }, Math.floor((Math.random()*(max+1))+min));
+  }
+})
