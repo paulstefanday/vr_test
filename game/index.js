@@ -5,10 +5,13 @@ var Game = function() {
 
 	this.step = 0;
 	this.score = 0;
+	this.duration = 30000;
 
 	this.init = () => {
 		setTimeout(() => {
 			this.question();
+			this.timer();
+
 		}, 3000);
 	}
 
@@ -35,7 +38,25 @@ var Game = function() {
 			}, delay);
 			delay = delay + 500
 			console.log('Added Question');
-    }
+    	}
+
+
+	}
+
+	// Sets Timer
+	this.timer = () => {
+
+		let timer = yo`<a-box timer color="tomato" data-duration="${this.duration}" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-box>`;
+		let scene = document.querySelector('#scene');
+		scene.appendChild(timer);
+
+		setTimeout(function() {
+			
+			this.result();
+		}, this.duration + 2000);
+	}
+
+	this.result = () => {
 
 	}
 
