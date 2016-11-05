@@ -11,11 +11,22 @@ AFRAME.registerComponent('cursor-listener', {
       console.log('I was clicked!');
     });
     this.el.addEventListener('mouseenter', function () {
-      console.log('Mouse enter!');
+      // console.log('Mouse enter!');
     });
     this.el.addEventListener('mouseleave', function () {
-      console.log('Mouse leave!');
+      // console.log('Mouse leave!');
     });
+    this.el.addEventListener('stateadded', function (evt) {
+      // if (  )
+      // document.querySelector('#cursor').emit('fade');
+    });
+    this.el.addEventListener('stateremoved', function (evt) {
+      if ( evt.detail.state === "cursor-hovered") {
+          // rendering state
+          document.querySelector('#cursor').emit('nice')
+      }
+      console.log('state removed: ', evt.detail.state);
 
+    });
   }
 });
