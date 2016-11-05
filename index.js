@@ -23,11 +23,13 @@ AFRAME.registerComponent('cursor-listener', {
       this.setAttribute('material', 'color', COLORS[randomIndex]);
       console.log('I was clicked!');
     });
-    this.el.addEventListener('mouseenter', function () {
-      console.log('Mouse enter!');
+    this.el.addEventListener('mouseenter', function (e) {
+      console.log('Mouse enter!', e.target);
+      e.target.scale="2 2 2"
     });
-    this.el.addEventListener('mouseleave', function () {
-      console.log('Mouse leave!');
+    this.el.addEventListener('mouseleave', function (e) {
+      console.log('Mouse leave!', e.target);
+      e.target.scale="1 1 1"
     });
     this.el.addEventListener('stateadded', function (evt) {
       // if (  )
