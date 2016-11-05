@@ -6,6 +6,7 @@
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.6.0/dist/aframe-extras.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="bundle.js"></script>
   </head>
   <body>
@@ -27,6 +28,8 @@
         <a-asset-item id="lilypads-scene-mtl" src="models/lilypads-scene.mtl"></a-asset-item>
 
         <a-asset-item id="cloud-obj" src="models/clouds.obj"></a-asset-item>
+        <audio id="game-loop" src="sound/GAME.m4a"></audio>
+        <audio id="sound-attack" src="sound/ATTACK.m4a"></audio>
       </a-assets>
 
 
@@ -40,7 +43,9 @@
                repeat="0"></a-animation>
       </a-camera>
 
-      <a-ocean width="50" depth="50" density="40"></a-ocean>
+      <a-ocean width="50" depth="50" density="40" sound="src: #game-loop; autoplay: true; loop: true"></a-ocean>
+
+      <a-entity id="elements"></a-entity>
 
       <!-- clouds -->
       <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
@@ -94,13 +99,6 @@
                to="-15.27 0.3 -14.37"
                repeat="indefinite"></a-animation>
       </a-entity>
-
-
-      <!-- flies -->
-      <!-- <a-entity cursor-listener obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="4 2 -10" scale="1 1 1" rotation="0 0 0"></a-entity>
-      <a-entity cursor-listener obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="4 3 -5" scale="1 1 1" rotation="0 0 0">
-        <a-entity material="color: white" text="text: 12; size: 0.3" position="-0.3 0.1 0"></a-entity>
-      </a-entity> -->
       <a-sky color="#6CCDEF"></a-sky>
     </a-scene>
   </body>
