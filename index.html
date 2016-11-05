@@ -17,6 +17,25 @@
 
       <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" position="2 0.5 -2" scale="1 1 1" rotation="0 -90 0"></a-entity>
 
+      <a-entity id="mario" position="-2 0.5 -2" scale="1 1 1" rotation="0 -90 0">
+        <a-cylinder color="#F55" radius="0.1"
+            animation__position="property: position; dir: alternate; loop: true; to: 2 0.5 -2; dur: 1000"
+        >
+      </a-entity>
+
+
+      <a-entity position="-2 0.5 -2" scale="1 1 1" rotation="-40 40 -40">
+        <a-cylinder color="#F55" radius="0.1"
+            animation__yoyo="easing: easeInSine;property: position; dir: alternate; loop: true; to: 2 0.5 -2; dur: 1000"
+        >
+      </a-entity>
+    </a-cylinder>
+
+
+    <a-light type="ambient" color="#333"></a-light>
+    <a-light type="directional" position="-1 1 -0.5"></a-light>
+    <a-light type="directional" position="1 1 0.5" intensity=".5"></a-light>
+
 
       <!-- <a-obj-model position="5 0.5 -4" src="models/frog.obj" mtl="models/frog.mtl">
         <a-animation attribute="position"
@@ -26,9 +45,9 @@
                repeat="indefinite"></a-animation>
       </a-obj-model> -->
 
-      <a-entity position="-1 0.5 -8" geometry="primitive: cone; radiusTop: 1">
+      <!-- <a-entity position="-1 0.5 -8" geometry="primitive: cone; radiusTop: 1">
         <a-animation attribute="geometry.radiusTop" to="0.5" dur="1000" repeat="indefinite"></a-animation>
-      </a-entity>
+      </a-entity> -->
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       <a-sky color="#ECECEC"></a-sky>
     </a-scene>
