@@ -32,6 +32,12 @@
 
       <a-camera>
         <a-cursor></a-cursor>
+        <a-animation attribute="position"
+               dur="5000"
+               fill="forwards"
+               from="0 1.5 20"
+               to="0 1.5 0"
+               repeat="0"></a-animation>
       </a-camera>
 
       <a-ocean width="50" depth="50" density="40"></a-ocean>
@@ -78,7 +84,6 @@
                to="0 0.3 -10"
                repeat="indefinite"></a-animation>
       </a-entity>
-
       <a-entity obj-model="obj: #lilypads-scene-obj; mtl: #lilypads-scene-mtl" position="-15.27 0.1 -14.37" scale="1 1 1" rotation="0 -40 0">
         <a-animation
                attribute="position"
