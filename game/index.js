@@ -41,9 +41,9 @@ var Game = function() {
 	this.rotation = (position) => {
 
 		let rotation = {
-			x: this.getRand(-5, 5), 
-			y: position.y * -10,
-			z: this.getRand(-5, 5),
+			x: 0, 
+			y: position.x * -10,
+			z: 0, 
 		}
 
 		return rotation;
