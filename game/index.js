@@ -1,46 +1,51 @@
 const questions = require('./questions');
+const yo = require('yo-yo');
 
 var Game = function() {
 	
+	this.step = 0;
+
 	this.init = () => {
 
-		console.log(`Init`);
-		this.question(0);
+		this.question();
 	}
 
-	this.question = (step) => {
+	this.question = () => {
 
+		for (let i = 0; i < questions[this.step].choices.length; i++) {
 
-		let scene = document.querySelector('#scene');
+			let position = this.position();
+	    	let entity = yo`<a-entity cursor-listener obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="${position}" scale="1 1 1" rotation="0 0 0"></a-entity>`;
 
-		console.log(scene);
-		console.log(`Question:`);
-
-		console.log(questions[step].choices);
-
-
-		for (let i = 0; i < questions[step].choices.length; i++) {
-	    	
-	    	let entity = document.createElement('a-entity');
-
-      		entity.setAttribute('position', {
-		        x: 15,
-		        y: 9,
-		        z: -7
-      		});
-
-	    	entity.setAttribute('obj-model', 'obj: url(models/fly-a.obj); mtl: url(models/fly-a.mtl)');
-	    	entity.setAttribute('scale', '1 1 1');
-	    	entity.setAttribute('rotation', '0 0 0');
-
-	    	scene.appendChild(entity);
-
-	    	console.log(scene);
+			scene.appendChild(entity)
+			console.log('Added Question');
 	    }
 
 	}
 
+	this.position = () => {
+
+		let x = this.getRand(-10, 15);
+		let y = this.getRand(1, 3);
+		let z = this.getRand(-2, -10);
+
+		return `${x} ${y} ${z}`;
+
+	}
+
+	this.getRand = (min, max) => {
+    	return Math.round(Math.random() * (max - min) + min);
+	}
 }
 
-var game = new Game();
-setTimeout(game.init, 3000);
+window.onload = function() { 
+
+	var game = new Game();
+	let scene = document.querySelector('#scene');
+
+	if (scene.hasLoaded) {
+		game.init();
+	} else {
+		scene.addEventListener('loaded', game.init);
+	}
+}
