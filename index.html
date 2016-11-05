@@ -23,6 +23,9 @@
         <a-asset-item id="lilypad-main-obj" src="models/lilypad-main.obj"></a-asset-item>
         <a-asset-item id="lilypad-main-mtl" src="models/lilypad-main.mtl"></a-asset-item>
 
+        <a-asset-item id="lilypads-scene-obj" src="models/lilypads-scene.obj"></a-asset-item>
+        <a-asset-item id="lilypads-scene-mtl" src="models/lilypads-scene.mtl"></a-asset-item>
+
         <a-asset-item id="cloud-obj" src="models/clouds.obj"></a-asset-item>
       </a-assets>
 
@@ -63,6 +66,30 @@
 
       <!-- lilypad -->
       <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -40 0"></a-entity>
+
+      <!-- lilypad scene  -->
+      <a-entity obj-model="obj: #lilypads-scene-obj; mtl: #lilypads-scene-mtl" position="0 0.1 -10" scale="1 1 1" rotation="0 -40 0">
+        <a-animation
+               attribute="position"
+               dur="2000"
+               direction="alternate-reverse"
+               fill="forwards"
+               from="0 0.1 -10"
+               to="0 0.3 -10"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+
+      <a-entity obj-model="obj: #lilypads-scene-obj; mtl: #lilypads-scene-mtl" position="-15.27 0.1 -14.37" scale="1 1 1" rotation="0 -40 0">
+        <a-animation
+               attribute="position"
+               dur="2000"
+               direction="alternate-reverse"
+               fill="forwards"
+               from="-15.27 0.1 -14.37"
+               to="-15.27 0.3 -14.37"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+
 
       <!-- flies -->
       <!-- <a-entity cursor-listener obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="4 2 -10" scale="1 1 1" rotation="0 0 0"></a-entity>
