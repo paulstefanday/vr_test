@@ -1,2 +1,3 @@
-let hi= 'poo'
-console.log(hi)
+require('aframe-text-component');
+require('./game/index.js');
+require('./game/events.js');
