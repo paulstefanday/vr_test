@@ -22,9 +22,9 @@ const yo = require('yo-yo')
 
 AFRAME.registerComponent('cursor-listener', {
   init: function () {
-    this.el.addEventListener('click', function (e) {
-      console.log('I was clicked!', e.target.getAttribute('data-choice'));
-    });
+    // this.el.addEventListener('click', function (e) {
+    //   console.log('I was clicked!', e.target.getAttribute('data-choice'));
+    // });
     this.el.addEventListener('mouseenter', function (e) {
       console.log('Mouse enter!', e.target);
       // addAnimation(e.target)

@@ -6,6 +6,7 @@
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.6.0/dist/aframe-extras.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="index.js"></script>
   </head>
   <body>
@@ -41,6 +42,8 @@
       </a-camera>
 
       <a-ocean width="50" depth="50" density="40"></a-ocean>
+
+      <a-entity id="elements"></a-entity>
 
       <!-- clouds -->
       <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
