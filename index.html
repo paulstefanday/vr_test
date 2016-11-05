@@ -11,40 +11,52 @@
   <body>
     <a-scene>
       <a-assets>
-          <a-asset-item id="frog-obj" src="models/frog.obj"></a-asset-item>
-          <a-asset-item id="frog-mtl" src="models/frog.mtl"></a-asset-item>
+        <a-asset-item id="frog-obj" src="models/frog.obj"></a-asset-item>
+        <a-asset-item id="frog-mtl" src="models/frog.mtl"></a-asset-item>
 
-          <a-asset-item id="fly-a-obj" src="models/fly-a.obj"></a-asset-item>
-          <a-asset-item id="fly-a-mtl" src="models/fly-a.mtl"></a-asset-item>
+        <a-asset-item id="fly-a-obj" src="models/fly-a.obj"></a-asset-item>
+        <a-asset-item id="fly-a-mtl" src="models/fly-a.mtl"></a-asset-item>
 
-          <a-asset-item id="fly-b-obj" src="models/fly-b.obj"></a-asset-item>
-          <a-asset-item id="fly-b-mtl" src="models/fly-b.mtl"></a-asset-item>
+        <a-asset-item id="fly-b-obj" src="models/fly-b.obj"></a-asset-item>
+        <a-asset-item id="fly-b-mtl" src="models/fly-b.mtl"></a-asset-item>
 
-          <a-asset-item id="lilypad-main-obj" src="models/lilypad-main.obj"></a-asset-item>
-          <a-asset-item id="lilypad-main-mtl" src="models/lilypad-main.mtl"></a-asset-item>
-        </a-assets>
+        <a-asset-item id="lilypad-main-obj" src="models/lilypad-main.obj"></a-asset-item>
+        <a-asset-item id="lilypad-main-mtl" src="models/lilypad-main.mtl"></a-asset-item>
+      </a-assets>
+
+      <a-ocean width="50" depth="50" density="40"></a-ocean>
+
+      <!-- frog -->
+      <a-entity obj-model="obj: #frog-obj; mtl: #frog-mtl" position="2 0.5 -2" scale="1 1 1" rotation="0 -90 0"></a-entity>
+
+      <!-- lilypad -->
+      <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="2 0.5 -1.4" scale="1 1 1" rotation="0 -40 0"></a-entity>
 
 
-        <!-- Camera -->
-        <!-- <a-entity camera universal-controls="movementEnabled: false" position="0 1.764 0"></a-entity> -->
+      <!-- flies -->
+      <a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="4 2 -10" scale="1 1 1" rotation="0 0 0"></a-entity>
+      <a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="4 3 -10" scale="1 1 1" rotation="0 0 0"></a-entity>
 
-        <!-- Ocean -->
-        <a-ocean width="50" depth="50" density="40"></a-ocean>
+      <a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="-4 1 -8" scale="1 1 1" rotation="0 0 0"></a-entity>
+      <a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="8 2 -12" scale="1 1 1" rotation="0 0 0"></a-entity>
 
-        <!-- Pedestals -->
-        <!-- <a-cylinder radius="1" height="50" color="#39BB82" position="0 -24.5 0"></a-cylinder>
-        <a-cylinder radius="1" height="50" color="#39BB82" position="5 -24.5 0"></a-cylinder>
-        <a-cylinder radius="1" height="50" color="#39BB82" position="-5 -24.5 0"></a-cylinder> -->
+      <a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="15 9 -7" scale="1 1 1" rotation="0 0 0"></a-entity>
+      <a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="-10 4 -9" scale="1 1 1" rotation="0 0 0"></a-entity>
 
-        <!-- Lighting -->
-        <a-entity light="type: hemisphere; color: #AAA; groundColor: #000000; intensity: 0.9;"></a-entity>
-        <a-entity light="type: ambient; color: #DC8874; intensity: 0.5;"></a-entity>
+      <a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="1 1 -8" scale="1 1 1" rotation="0 0 0"></a-entity>
+      <a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="3 2 -12" scale="1 1 1" rotation="0 0 0"></a-entity>
 
-        <a-entity obj-model="obj: #frog-obj; mtl: #frog-mtl" position="2 0.5 -2" scale="1 1 1" rotation="0 -90 0"></a-entity>
-        <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="2 0.5 -1.4" scale="1 1 1" rotation="0 -40 0"></a-entity>
 
-        <a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" position="4 2 -10" scale="1 1 1" rotation="0 0 0"></a-entity>
-        <a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="4 3 -10" scale="1 1 1" rotation="0 0 0"></a-entity>
+      <!-- <a-obj-model position="5 0.5 -4" src="models/frog.obj" mtl="models/frog.mtl">
+        <a-animation attribute="position"
+               dur="1000"
+               fill="forwards"
+               to="-1 0.5 -5"
+               repeat="indefinite"></a-animation>
+      </a-obj-model> -->
+
+      <!-- <a-plane position="0 0 -4" rotation="-90 0 0" width="1000" height="1000" color="#48A7C1"></a-plane> -->
+      <a-sky color="#6CCDEF"></a-sky>
     </a-scene>
   </body>
 </html>
