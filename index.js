@@ -14,6 +14,19 @@
 // // });
 
 require('./game/index.js');
+const yo = require('yo-yo')
+
+function addAnimation(el) {
+  let child = yo`<a-animation attribute="scale" dur="200" fill="forwards" to="2 2 2" repeat="0"></a-animation>`
+  el.appendChild(child)
+  console.log('added')
+}
+
+function leaveAnimation(el) {
+  el.innerHTML = ''
+  let child = yo`<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>`
+  el.appendChild(child)
+}
 
 AFRAME.registerComponent('cursor-listener', {
   init: function () {
@@ -26,11 +39,12 @@ AFRAME.registerComponent('cursor-listener', {
     });
     this.el.addEventListener('mouseenter', function (e) {
       console.log('Mouse enter!', e.target);
-      e.target.scale="2 2 2"
+      // e.target.setAttribute("scale","2 2 2")
+      addAnimation(e.target)
     });
     this.el.addEventListener('mouseleave', function (e) {
       console.log('Mouse leave!', e.target);
-      e.target.scale="1 1 1"
+      leaveAnimation(e.target)
     });
     this.el.addEventListener('stateadded', function (evt) {
       // if (  )
@@ -46,4 +60,3 @@ AFRAME.registerComponent('cursor-listener', {
     });
   }
 });
-
