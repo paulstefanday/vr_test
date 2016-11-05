@@ -19,6 +19,8 @@
         <a-asset-item id="lilypad-main-mtl" src="models/lilypad-main.mtl"></a-asset-item>
 
         <img src="/textures/button_start.png" id="button_start" crossorigin="anonymous">
+        <img src="/textures/title_card.png" id="title_card" crossorigin="anonymous">
+        <img src="/textures/instructions.png" id="instructions" crossorigin="anonymous">
       </a-assets>
 
 
@@ -71,7 +73,6 @@
                 delay="2000"
                dur="200"
                fill="forwards"
-               from="0.12 0.3 2.8"
                to="0.12 0.6 2.8"
                repeat="0"></a-animation>
          <a-animation attribute="position"
@@ -100,8 +101,39 @@
       <!-- lilypad -->
       <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 2.6" scale="0.4 0.4 0.4" rotation="0 0 0"></a-entity>
 
+      <a-plane width="5.14" height="1.03" opacity="0" position="0 4.2 -3" scale="1 1 1" material="src: #title_card; repeat: 1 1 ; transparent: true;">
+        <a-animation attribute="opacity"
+          delay="2800"
+          dur="300"
+          fill="forwards"
+          to="1"
+          repeat="0"></a-animation>
+        <a-animation attribute="scale"
+          delay="2800"
+          dur="1000"
+          fill="forwards"
+          to="2 2 2"
+          easing="ease-out-elastic"
+          repeat="0"></a-animation>
+      </a-plane>
 
-      <a-box  depth="0.02" height="0.58" position="0 0.65 0" width="2.4" material="src: #button_start; repeat: 1 1 ; transparent: false;"></a-box>
+      <a-plane width="5.62" height="1.4" opacity="0" position="0 1.4 -1" scale="1.1 1.1 1.1" material="src: #instructions; repeat: 1 1 ; transparent: true;">
+        <a-animation attribute="opacity"
+          delay="3100"
+          dur="1000"
+          fill="forwards"
+          to="0.85"
+          repeat="0"></a-animation>
+      </a-plane>
+
+      <a-box width="2.4" height="0.58" depth="0.02" opacity="0" position="0 0.65 0" material="src: #button_start; repeat: 1 1 ; transparent: false;">
+        <a-animation attribute="opacity"
+          delay="3400"
+          dur="1000"
+          fill="forwards"
+          to="1"
+          repeat="0"></a-animation>
+      </a-box>
 
       <!-- Dim ambient lighting. -->
       <a-sky color="#6CCDEF"></a-sky>
