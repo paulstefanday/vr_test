@@ -1,6 +1,7 @@
 require('aframe-text-component');
 var Game = require('./game/index.js');
 require('./game/events.js');
+require('./game/animation.js')
 var game = new Game();
 
 window.onload = function() {
@@ -14,12 +15,13 @@ window.onload = function() {
 	}
 }
 
-
 AFRAME.registerComponent('clicked', {
   init: function () {
     this.el.addEventListener('click', function(e) {
       console.log('I was clicked!', e.target.getAttribute('data-choice'));
       game.answer(e.target.getAttribute('data-choice'))
     })
-  }
+  },
+	tick: function( tick ) {
+	}
 });
