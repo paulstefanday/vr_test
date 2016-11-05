@@ -1,2 +1,1 @@
-let hi= 'poo'
-console.log(hi)
+require('aframe-animation-component');

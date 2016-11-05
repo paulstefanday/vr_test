@@ -9,9 +9,26 @@
   </head>
   <body>
     <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+
+      <a-assets>
+        <a-asset-item id="tree-obj" src="models/frog.obj"></a-asset-item>
+        <a-asset-item id="tree-mtl" src="models/frog.mtl"></a-asset-item>
+      </a-assets>
+
+      <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" position="2 0.5 -2" scale="1 1 1" rotation="0 -90 0"></a-entity>
+
+
+      <!-- <a-obj-model position="5 0.5 -4" src="models/frog.obj" mtl="models/frog.mtl">
+        <a-animation attribute="position"
+               dur="1000"
+               fill="forwards"
+               to="-1 0.5 -5"
+               repeat="indefinite"></a-animation>
+      </a-obj-model> -->
+
+      <a-entity position="-1 0.5 -8" geometry="primitive: cone; radiusTop: 1">
+        <a-animation attribute="geometry.radiusTop" to="0.5" dur="1000" repeat="indefinite"></a-animation>
+      </a-entity>
       <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
       <a-sky color="#ECECEC"></a-sky>
     </a-scene>
