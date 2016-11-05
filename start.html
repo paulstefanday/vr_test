@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A-ribbit-metic!</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.6.0/dist/aframe-extras.min.js"></script>
+    <script src="start.js"></script>
+  </head>
+  <body>
+    <a-scene id="scene">
+      <a-assets>
+        <a-asset-item id="cloud-obj" src="models/clouds.obj"></a-asset-item>
+
+        <a-asset-item id="frog-obj" src="models/frog.obj"></a-asset-item>
+        <a-asset-item id="frog-mtl" src="models/frog.mtl"></a-asset-item>
+        <a-asset-item id="lilypad-main-obj" src="models/lilypad-main.obj"></a-asset-item>
+        <a-asset-item id="lilypad-main-mtl" src="models/lilypad-main.mtl"></a-asset-item>
+
+        <img src="/textures/button_start.png" id="button_start" crossorigin="anonymous">
+        <img src="/textures/title_card.png" id="title_card" crossorigin="anonymous">
+        <img src="/textures/instructions.png" id="instructions" crossorigin="anonymous">
+      </a-assets>
+
+
+      <a-camera>
+        <a-cursor></a-cursor>
+        <a-animation attribute="position"
+               dur="0"
+               fill="forwards"
+               to="0 1.5 10"
+               repeat="0"></a-animation>
+        <a-animation attribute="position"
+               delay="800"
+               dur="2000"
+               fill="forwards"
+               from="0 1.5 10"
+               to="0 1.5 5"
+               repeat="0"></a-animation>
+      </a-camera>
+
+      <a-ocean width="50" depth="50" density="40"></a-ocean>
+
+      <!-- clouds -->
+      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               dur="20000"
+               fill="forwards"
+               to="4000 1000 -2000"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               begin="7000"
+               dur="20000"
+               fill="forwards"
+               to="4000 1000 -2000"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               begin="7000"
+               dur="20000"
+               fill="forwards"
+               to="4000 1000 -2000"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+
+      <!-- frog -->
+      <a-entity obj-model="obj: #frog-obj; mtl: #frog-mtl" position="0.12 0.3 2.8" scale="0.3 0.3 0.3" rotation="0 -230 0">
+        <a-animation attribute="position"
+                delay="2000"
+               dur="200"
+               fill="forwards"
+               to="0.12 0.6 2.8"
+               repeat="0"></a-animation>
+         <a-animation attribute="position"
+                 delay="2200"
+                dur="200"
+                fill="forwards"
+                from="0.12 0.6 2.8"
+                to="0.12 0.3 2.8"
+                repeat="0"></a-animation>
+        <a-animation attribute="position"
+                delay="2400"
+               dur="200"
+               fill="forwards"
+               from="0.12 0.3 2.8"
+               to="0.12 0.6 2.8"
+               repeat="0"></a-animation>
+         <a-animation attribute="position"
+                 delay="2600"
+                dur="200"
+                fill="forwards"
+                from="0.12 0.6 2.8"
+                to="0.12 0.3 2.8"
+                repeat="0"></a-animation>
+      </a-entity>
+
+      <!-- lilypad -->
+      <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 2.6" scale="0.4 0.4 0.4" rotation="0 0 0"></a-entity>
+
+      <a-plane width="5.14" height="1.03" opacity="0" position="0 4.2 -3" scale="1 1 1" material="src: #title_card; repeat: 1 1 ; transparent: true;">
+        <a-animation attribute="opacity"
+          delay="2800"
+          dur="300"
+          fill="forwards"
+          to="1"
+          repeat="0"></a-animation>
+        <a-animation attribute="scale"
+          delay="2800"
+          dur="1000"
+          fill="forwards"
+          to="2 2 2"
+          easing="ease-out-elastic"
+          repeat="0"></a-animation>
+      </a-plane>
+
+      <a-plane width="5.62" height="1.4" opacity="0" position="0 1.4 -1" scale="1.1 1.1 1.1" material="src: #instructions; repeat: 1 1 ; transparent: true;">
+        <a-animation attribute="opacity"
+          delay="3100"
+          dur="1000"
+          fill="forwards"
+          to="0.85"
+          repeat="0"></a-animation>
+      </a-plane>
+
+      <a-box width="2.4" height="0.58" depth="0.02" opacity="0" position="0 0.65 0" material="src: #button_start; repeat: 1 1 ; transparent: false;">
+        <a-animation attribute="opacity"
+          delay="3400"
+          dur="1000"
+          fill="forwards"
+          to="1"
+          repeat="0"></a-animation>
+      </a-box>
+
+      <!-- Dim ambient lighting. -->
+      <a-sky color="#6CCDEF"></a-sky>
+    </a-scene>
+  </body>
+</html>
