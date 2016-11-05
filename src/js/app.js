@@ -13,17 +13,80 @@ import Sky from './components/Sky';
 class VRScene extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {color: 'red'};
+    this.answer = this.answer.bind(this);
+    this.state = {
+      score: 0,
+      step: 0,
+      questions: [
+			{
+				question: "5 x 5",
+				choices: [25, 76, 12, 20, 23],
+				answer: 25,
+			},
+			{
+				question: "5 x 2",
+				choices: [8, 10, 12, 20, 23],
+				answer: 10,
+			},
+			{
+				question: "12 x 2",
+				choices: [24, 22, 20, 30, 23],
+				answer: 24,
+			},
+			{
+				question: "6 x 8",
+				choices: [40, 32, 48, 46, 62],
+				answer: 48,
+			},
+			{
+				question: "7 x 4",
+				choices: [29, 16, 28, 46, 32],
+				answer: 28,
+			},
+			{
+				question: "5 x 5",
+				choices: [25, 76, 12, 20, 23],
+				answer: 5,
+			},
+			{
+				question: "5 x 2",
+				choices: [8, 10, 12, 20, 23],
+				answer: 10,
+			},
+			{
+				question: "12 x 2",
+				choices: [24, 22, 20, 30, 23],
+				answer: 24,
+			},
+			{
+				question: "6 x 8",
+				choices: [40, 32, 48, 46, 62],
+				answer: 48,
+			},
+			{
+				question: "7 x 4",
+				choices: [29, 16, 28, 46, 32],
+				answer: 28,
+			}
+		]
+    };
   }
 
-  changeColor() {
-    const colors = ['red', 'orange', 'yellow', 'green', 'blue'];
-    this.setState({
-      color: colors[Math.floor(Math.random() * colors.length)]
-    });
+  answer(e) {
+    // return () => {
+      console.log(e.target)
+      console.log(arguments)
+      // if(this.state.questions[this.state.step][answer] === 1) {
+      //   // set score +1
+      //   this.setState({ score: this.state.score + 1 })
+      // }
+      // set step +1
+      this.setState({ step: this.state.step + 1 })
+    // }
   }
 
   render () {
+    let count = -3
     return (
       <Scene>
         <Camera>
@@ -36,7 +99,7 @@ class VRScene extends React.Component {
         <Sky src="url(https://rawgit.com/aframevr/assets/gh-pages/360-image-gallery-boilerplate/img/sechelt.jpg)"/>
 
         <Text
-          text='2 x 3'
+          text={this.state.questions[this.state.step].question}
           color='#DADADA'
           position='-1.75 1 -3'/>
 
@@ -44,18 +107,18 @@ class VRScene extends React.Component {
         <Entity light={{type: 'directional', intensity: 0.5}} position='-1 1 0'/>
         <Entity light={{type: 'directional', intensity: 1}} position='1 1 0'/>
 
-        <Entity
-          animation__rot={{property: 'rotation', dur: 2000, loop: true, to: '360 360 360'}}
-          animation__sca={{property: 'scale', dir: 'alternate', dur: 100, loop: true, to: '1.1 1.1 1.1'}}
-          geometry='primitive: box'
-          material={{color: this.state.color, opacity: 0.6}}
-          position='0 -0.5 -3'
-          onClick={this.changeColor.bind(this)}>
-          <Entity
-            animation__scale={{property: 'scale', dir: 'alternate', dur: 300, loop: true, to: '1 2 2'}}
-            geometry='primitive: box; depth: 0.2; height: 0.2; width: 0.2'
-            material={{color: '#24CAFF'}}/>
-        </Entity>
+        { this.state.questions[this.state.step].choices.map(value => {
+          count++
+          return <Entity
+            animation__sca={{property: 'scale', dir: 'alternate', dur: 100, loop: true, to: '1.1 1.1 1.1'}}
+            geometry='primitive: box'
+            material={{color: 'red', opacity: 0.6}}
+            position={(count*2) + ' -0.5 -3'}
+            value={value}
+            onClick={this.answer}>
+              <Text text={value} olor='#DADADA'></Text>
+          </Entity>
+        })}
       </Scene>
     );
   }
