@@ -17,8 +17,10 @@ var Game = function() {
 
 	this.question = () => {
 
-		let questionText = yo`<a-entity material="color: white" text="text: '${questions[this.step].question}'; size: 0.24"></a-entity>`
-		$('question').append(questionText)
+		let question 
+		let questionText = yo`<a-entity position="1 2 -5" material="color: white" text="text: '${questions[this.step].question}'; size: 0.24"></a-entity>`
+		
+		$('#question').append(questionText)
 
 		for (let i = 0; i < questions[this.step].choices.length; i++) {
 			this.choice(questions[this.step].choices[i]);
@@ -33,7 +35,7 @@ var Game = function() {
 		let position = this.position();
 		let rotation = this.rotation(position);
 		let scene = document.querySelector('#elements');
-		
+
 		let entity = yo`
 			<a-entity flapping>
 				<a-entity clicked obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" data-choice="${choice}" position="${position.x} ${position.y} ${position.z}" scale="0 0 0" rotation="${rotation.x} ${rotation.y} ${rotation.z}" sound="src: #sound-eat; on: click">
@@ -63,14 +65,12 @@ var Game = function() {
 		let scene = document.querySelector('#scene');
 		scene.appendChild(timer);
 
-		setTimeout(function() {
-			
-			this.result();
-		}, this.duration + 2000);
+		setTimeout(this.result, this.duration + 2000);
 	}
 
 	this.result = () => {
 
+		console.log("End of the game!");
 	}
 
 	this.answer = (value) => {
