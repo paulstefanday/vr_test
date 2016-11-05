@@ -27,9 +27,10 @@
         <a-asset-item id="lilypads-scene-obj" src="models/lilypads-scene.obj"></a-asset-item>
         <a-asset-item id="lilypads-scene-mtl" src="models/lilypads-scene.mtl"></a-asset-item>
 
-        <a-asset-item id="cloud-obj" src="models/clouds.obj"></a-asset-item>
-        <audio id="game-loop" src="sound/GAME.m4a"></audio>
+        <a-asset-item id="clouds-obj" src="models/clouds.obj"></a-asset-item>
+        <audio id="sound-game-music" src="sound/GAME.m4a"></audio>
         <audio id="sound-attack" src="sound/ATTACK.m4a"></audio>
+        <audio id="sound-eat" src="sound/EATING.m4a"></audio>
       </a-assets>
 
 
@@ -43,32 +44,35 @@
                repeat="0"></a-animation>
       </a-camera>
 
-      <a-ocean width="50" depth="50" density="40" sound="src: #game-loop; autoplay: true; loop: true"></a-ocean>
+      <a-ocean width="50" depth="50" density="40" sound="src: #sound-game-music; autoplay: true; loop: true"></a-ocean>
 
       <a-entity id="elements"></a-entity>
 
       <!-- clouds -->
-      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+      <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-50 9 -13" scale="1 1 1" opacity="0.5" rotation="0 0 0">
         <a-animation attribute="position"
-               dur="20000"
+               dur="40000"
                fill="forwards"
-               to="4000 1000 -2000"
+               easing="linear"
+               to="40 9 -13"
                repeat="indefinite"></a-animation>
       </a-entity>
-      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+      <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-40 10 -9" scale="1 1 1" opacity="0.5" rotation="0 0 0">
         <a-animation attribute="position"
-               begin="7000"
-               dur="20000"
+               begin="6500"
+               dur="70000"
                fill="forwards"
-               to="4000 1000 -2000"
+               easing="linear"
+               to="40 10 -9"
                repeat="indefinite"></a-animation>
       </a-entity>
-      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+      <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-40 11 -7" scale="1 1 1" opacity="0.5" rotation="0 0 0">
         <a-animation attribute="position"
-               begin="7000"
-               dur="20000"
+               begin="8000"
+               dur="40000"
                fill="forwards"
-               to="4000 1000 -2000"
+               easing="linear"
+               to="40 11 -7"
                repeat="indefinite"></a-animation>
       </a-entity>
 

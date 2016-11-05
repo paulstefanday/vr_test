@@ -22,7 +22,7 @@ var Game = function() {
 			let rotation = this.rotation(position);
 			let choice = questions[this.step].choices[i];
 
-    	let entity = yo`<a-entity clicked obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" data-choice="${choice}" position="${position.x} ${position.y} ${position.z}" scale="0 0 0" rotation="${rotation.x} ${rotation.y} ${rotation.z}">
+    	let entity = yo`<a-entity clicked obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" data-choice="${choice}" position="${position.x} ${position.y} ${position.z}" scale="0 0 0" rotation="${rotation.x} ${rotation.y} ${rotation.z}" sound="src: #sound-eat; on: click">
 					<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
 					<a-entity data-choice="${choice}" material="color: white" text="text: ${choice}; size: 0.24" position="-0.2 0.1 0"></a-entity>
 					<a-box data-choice="${choice}" cursor-listener opacity="0"></a-box>
@@ -54,7 +54,6 @@ var Game = function() {
 			setTimeout(() => $(this).remove(), delay);
 			delay = delay + 200;
 		});
-
 		setTimeout(() => this.question(), delay);
 	}
 
