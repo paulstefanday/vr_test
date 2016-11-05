@@ -13,6 +13,7 @@
 // //   }
 // // });
 
+require('./game/index.js');
 
 AFRAME.registerComponent('cursor-listener', {
   init: function () {
@@ -45,3 +46,4 @@ AFRAME.registerComponent('cursor-listener', {
     });
   }
 });
+
