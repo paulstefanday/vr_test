@@ -18,7 +18,6 @@ const getOpposite = (input, a, b) => {
     return b
 }
 
-
 AFRAME.registerComponent('animate-fly', {
   init: function () {
     console.log('#######################')

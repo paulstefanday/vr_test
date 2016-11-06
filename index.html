@@ -35,6 +35,7 @@
         <audio id="sound-game-music" src="sound/GAME.m4a"></audio>
         <audio id="sound-attack" src="sound/ATTACK.m4a"></audio>
         <audio id="sound-eat" src="sound/EATING.m4a"></audio>
+        <img src="/textures/title_card.png" id="title_card" crossorigin="anonymous">
       </a-assets>
 
 
@@ -50,6 +51,8 @@
             geometry="primitive: box; width: 2000; height: 0.1" material="color: blue"
             position="0 -1 -1">
           </a-entity>
+          <a-plane width="5.14" height="0.30" position="0.15 0 -1" scale="1 1 1" material="transparent: true"> 
+          </a-plane>
       </a-camera>
 
       <a-ocean width="50" depth="50" density="40" sound="src: #sound-game-music; autoplay: true; loop: true"></a-ocean>
