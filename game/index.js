@@ -1,7 +1,7 @@
 const questions = require('./questions');
 const yo = require('yo-yo');
-var sound_correct = new Audio('../sound/SCORE.m4a');
-var sound_wrong = new Audio('../sound/WRONG.m4a');
+var sound_correct = new Audio('../sound/SCORE.wav');
+var sound_wrong = new Audio('../sound/WRONG.wav');
 
 var Game = function() {
 
