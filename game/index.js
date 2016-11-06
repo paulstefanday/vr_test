@@ -7,7 +7,7 @@ var Game = function() {
 
 	this.step = 0;
 	this.score = 0;
-	this.duration = 60000;
+	this.duration = 30000;
 
 	this.init = () => {
 		setTimeout(() => {
@@ -85,8 +85,15 @@ var Game = function() {
 		$('#question-text').attr('visible', 'false')
 		$('#box').attr('visible', 'false')
 		$('#timercontainer').attr('visible', 'false')
+		$('#elements').attr('visible', 'false')
+		$('#turtle').attr('visible', 'true')
+
+		// update score
+		let text = $('#endfish').children('')[0]
+		$(text).attr('bmfont-text', `text: ${this.score} Points!; color:white`)
 
 		// show sign
+		$('#endfish').attr('visible', 'true')
 		// let show = yo`<a-animation attribute="position" dur="800" fill="forwards" to="1 -0.25 -2.77" repeat="0"></a-animation>`
 		// $('#endfish').appendChild(show)
 
