@@ -11,7 +11,7 @@
   <body>
     <a-scene id="scene">
       <a-assets>
-        <a-asset-item id="cloud-obj" src="models/clouds.obj"></a-asset-item>
+        <a-asset-item id="clouds-obj" src="models/clouds.obj"></a-asset-item>
 
         <a-asset-item id="frog-obj" src="models/frog.obj"></a-asset-item>
         <a-asset-item id="frog-mtl" src="models/frog.mtl"></a-asset-item>
@@ -43,27 +43,30 @@
       <a-ocean width="50" depth="50" density="40"></a-ocean>
 
       <!-- clouds -->
-      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+      <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-50 9 -13" scale="1 1 1" opacity="0.5" rotation="0 0 0">
         <a-animation attribute="position"
-               dur="20000"
+               dur="40000"
                fill="forwards"
-               to="4000 1000 -2000"
+               easing="linear"
+               to="40 9 -13"
                repeat="indefinite"></a-animation>
       </a-entity>
-      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+      <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-40 10 -9" scale="1 1 1" opacity="0.5" rotation="0 0 0">
         <a-animation attribute="position"
-               begin="7000"
-               dur="20000"
+               begin="6500"
+               dur="70000"
                fill="forwards"
-               to="4000 1000 -2000"
+               easing="linear"
+               to="40 10 -9"
                repeat="indefinite"></a-animation>
       </a-entity>
-      <a-entity obj-model="obj: #cloud-obj" position="-5000 1000 -2000" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+      <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-40 11 -7" scale="1 1 1" opacity="0.5" rotation="0 0 0">
         <a-animation attribute="position"
-               begin="7000"
-               dur="20000"
+               begin="8000"
+               dur="40000"
                fill="forwards"
-               to="4000 1000 -2000"
+               easing="linear"
+               to="40 11 -7"
                repeat="indefinite"></a-animation>
       </a-entity>
 
