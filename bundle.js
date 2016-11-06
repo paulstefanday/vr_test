@@ -63,7 +63,7 @@ function addAnimation(el) {
 
 	var animation = function () {
 
-		var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
+		var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
 		var bel0 = document.createElement("a-animation");
 		bel0.setAttribute("attribute", "scale");
 		bel0.setAttribute("dur", "200");
@@ -88,7 +88,7 @@ function leaveAnimation(el) {
 
 	var child = function () {
 
-		var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
+		var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
 		var bel0 = document.createElement("a-animation");
 		bel0.setAttribute("attribute", "scale");
 		bel0.setAttribute("dur", "200");
@@ -134,7 +134,7 @@ AFRAME.registerComponent('timer', {
 
 		var animation = function () {
 
-			var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
+			var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
 			var bel0 = document.createElement("a-animation");
 			bel0.setAttribute("dur", arguments[0]);
 			bel0.setAttribute("attribute", "width");
@@ -145,7 +145,7 @@ AFRAME.registerComponent('timer', {
 		el.appendChild(animation);
 	}
 });
-},{"/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],3:[function(require,module,exports){
+},{"/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],3:[function(require,module,exports){
 var questions = require('./questions');
 var yo = require('yo-yo');
 
@@ -154,30 +154,30 @@ var Game = function () {
 
 	this.step = 0;
 	this.score = 0;
-	this.duration = 30000;
+	this.duration = 50000;
 
 	this.init = function () {
 		setTimeout(function () {
 
 			var questionContainer = function () {
 
-				var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
+				var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
 				var bel0 = document.createElement("a-plane");
 				bel0.setAttribute("id", "question");
 				bel0.setAttribute("color", "#d1fd40");
-				bel0.setAttribute("position", "0 1.21 -1.5");
-				bel0.setAttribute("height", "0.4");
+				bel0.setAttribute("position", "0 1 -1.5");
+				bel0.setAttribute("height", "0.28");
 				bel0.setAttribute("width", "0.8");
 				ac(bel0, ["\n        "]);
 				return bel0;
 			}();
 			var question = function () {
 
-				var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
+				var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
 				var bel0 = document.createElement("a-entity");
 				bel0.setAttribute("id", "question-text");
 				bel0.setAttribute("bmfont-text", "text: ; color:#000000");
-				bel0.setAttribute("position", "-0.18 -0.1 0");
+				bel0.setAttribute("position", "-0.18 -0.03 0");
 				bel0.setAttribute("scale", "0.8 0.8 0.8");
 				return bel0;
 			}();
@@ -213,7 +213,7 @@ var Game = function () {
 
 		var entity = function () {
 
-			var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
+			var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
 			var bel8 = document.createElement("a-entity");
 			bel8.setAttribute("flapping", "flapping");
 			var bel3 = document.createElement("a-entity");
@@ -278,17 +278,17 @@ var Game = function () {
 		//3d9fba
 		var timerContainer = function () {
 
-			var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
+			var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
 			var bel0 = document.createElement("a-plane");
 			bel0.setAttribute("color", "#ffffff");
-			bel0.setAttribute("position", "0 1 -1.5");
+			bel0.setAttribute("position", "0 0.85 -1.5");
 			bel0.setAttribute("height", "0.05");
 			bel0.setAttribute("width", "0.8");
 			return bel0;
 		}();
 		var timer = function () {
 
-			var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
+			var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
 			var bel0 = document.createElement("a-plane");
 			bel0.setAttribute("timer", "timer");
 			bel0.setAttribute("color", "#ef5a30");
@@ -315,12 +315,20 @@ var Game = function () {
 		_this.score = _this.score + 1;
 		var text = $('#score').children('')[0];
 		$(text).attr('bmfont-text', 'text: ' + _this.score + ' x; color:white');
+		$('#correct').attr('visible', 'true');
+		setTimeout(function () {
+			return $('#correct').attr('visible', 'false');
+		}, 2000);
 	};
 
 	this.answer = function (value) {
 		// Update score if correct
-		if (questions[_this.step].answer === parseInt(value)) _this.updateScore();
-
+		if (questions[_this.step].answer === parseInt(value)) _this.updateScore();else {
+			$('#wrong').attr('visible', 'true');
+			setTimeout(function () {
+				return $('#wrong').attr('visible', 'false');
+			}, 2000);
+		}
 		// Update step
 		_this.step++;
 
@@ -333,11 +341,6 @@ var Game = function () {
 		$('#elements').children('').each(function () {
 			$(this).remove();
 		});
-
-		// $('#elements').children('').each(function () {
-		// 	setTimeout(() => $(this).remove(), delay);
-		// 	delay = delay + 200;
-		// });
 		setTimeout(function () {
 			return _this.question();
 		}, 500);
@@ -369,7 +372,7 @@ var Game = function () {
 };
 
 module.exports = Game;
-},{"./questions":4,"/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],4:[function(require,module,exports){
+},{"./questions":4,"/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],4:[function(require,module,exports){
 module.exports = [{
 	question: "5 x 5",
 	choices: [25, 76, 12, 20, 23],

@@ -7,7 +7,7 @@ var Game = function() {
 
 	this.step = 0;
 	this.score = 0;
-	this.duration = 50000;
+	this.duration = 3000;
 
 	this.init = () => {
 		setTimeout(() => {
@@ -76,10 +76,18 @@ var Game = function() {
 		timerContainer.appendChild(timer)
 		camera.appendChild(timerContainer);
 
-		setTimeout(this.result, this.duration + 2000);
+		setTimeout(this.result, 0);
 	}
 
 	this.result = () => {
+		// hide question and score
+		$('#question').attr('visible', 'false')
+		$('#question-text').attr('visible', 'false')
+		$('#box').attr('visible', 'false')
+
+		// show sign
+		let show = yo`<a-animation attribute="position" dur="800" fill="forwards" to="1 -0.25 -2.77" repeat="0"></a-animation>`
+		$('#endfish').appendChild(show)
 
 		console.log("End of the game!");
 	}
@@ -88,17 +96,12 @@ var Game = function() {
 		this.score = this.score + 1
 		let text = $('#score').children('')[0]
 		$(text).attr('bmfont-text', `text: ${this.score} x; color:white`)
-		$('#correct').attr('visible', 'true')
-		setTimeout(() => $('#correct').attr('visible', 'false'), 2000)
 	}
 
 	this.answer = (value) => {
 		// Update score if correct
 		if(questions[this.step].answer === parseInt(value)) this.updateScore()
-		else {
-			$('#wrong').attr('visible', 'true')
-			setTimeout(() => $('#wrong').attr('visible', 'false'), 2000)
-		}
+
 		// Update step
 		this.step++
 
@@ -111,6 +114,11 @@ var Game = function() {
 		$('#elements').children('').each(function () {
 			 $(this).remove()
 		 })
+
+		// $('#elements').children('').each(function () {
+		// 	setTimeout(() => $(this).remove(), delay);
+		// 	delay = delay + 200;
+		// });
 		setTimeout(() => this.question(), 500);
 	}
 
