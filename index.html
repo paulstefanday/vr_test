@@ -27,6 +27,10 @@
         <a-asset-item id="lilypads-scene-obj" src="models/lilypads-scene.obj"></a-asset-item>
         <a-asset-item id="lilypads-scene-mtl" src="models/lilypads-scene.mtl"></a-asset-item>
 
+        <a-asset-item id="goldfish-obj" src="models/goldfish.obj"></a-asset-item>
+        <a-asset-item id="goldfish-mtl" src="models/goldfish.mtl"></a-asset-item>
+
+        <img id="sky" src="textures/bg.jpg">
         <a-asset-item id="clouds-obj" src="models/clouds.obj"></a-asset-item>
         <audio id="sound-game-music" src="sound/GAME.m4a"></audio>
         <audio id="sound-attack" src="sound/ATTACK.m4a"></audio>
@@ -81,6 +85,16 @@
       <!-- frog -->
       <a-entity obj-model="obj: #frog-obj; mtl: #frog-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -90 0"></a-entity>
 
+      <!-- goldfish / where the equation is -->
+      <a-entity obj-model="obj: #goldfish-obj; mtl: #goldfish-mtl" position="2.5 -3000.2 -5" scale="1 1 1" rotation="0 -30 0">
+        <a-animation attribute="position"
+                delay="4000"
+               dur="2000"
+               fill="forwards"
+               to="2.5 -1.4 -5"
+               repeat="0"></a-animation>
+      </a-entity>
+
       <!-- lilypad -->
       <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -40 0"></a-entity>
 
@@ -105,7 +119,7 @@
                to="-15.27 0.3 -14.37"
                repeat="indefinite"></a-animation>
       </a-entity>
-      <a-sky color="#6CCDEF"></a-sky>
+      <a-sky color="#6CCDEF" src="#sky"></a-sky>
     </a-scene>
   </body>
 </html>
