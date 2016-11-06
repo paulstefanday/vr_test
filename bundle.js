@@ -154,8 +154,8 @@ AFRAME.registerComponent('timer', {
 },{"/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],3:[function(require,module,exports){
 var questions = require('./questions');
 var yo = require('yo-yo');
-var sound_correct = new Audio('../sound/SCORE.wav');
-var sound_wrong = new Audio('../sound/WRONG.wav');
+var sound_correct = new Audio('/sound/SCORE.wav');
+var sound_wrong = new Audio('/sound/WRONG.wav');
 
 var Game = function () {
 	var _this = this;
