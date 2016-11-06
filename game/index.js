@@ -19,16 +19,15 @@ var Game = function() {
 
 		let question = yo`<a-entity question position="0 1 -3"></a-entity>`;
 		let questionText = yo`<a-entity material="color: white" text="text: ${questions[this.step].question}; size: 0.24"></a-entity>`
-		
+
 		question.appendChild(questionText);
 		$('#question').append(question)
-
 		let delay = 500
 
 		for (let i = 0; i < questions[this.step].choices.length; i++) {
 			this.choice(questions[this.step].choices[i], delay);
 			delay = delay + 500
-    	}
+  	}
 	}
 
 	this.choice = (choice, delay) => {
@@ -60,8 +59,11 @@ var Game = function() {
 	// Sets Timer
 	this.timer = () => {
 
-		let timer = yo`<a-box timer color="tomato" data-duration="${this.duration}" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-box>`;
+		let timerContainer = yo`<a-plane color="#ffffff" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-plane>`;
+		let timer = yo`<a-plane timer color="tomato" data-duration="${this.duration}" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-plane>`;
 		let scene = document.querySelector('#scene');
+
+		scene.appendChild(timerContainer);
 		scene.appendChild(timer);
 
 		setTimeout(this.result, this.duration + 2000);
