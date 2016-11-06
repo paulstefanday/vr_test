@@ -12,8 +12,11 @@ var Game = function() {
 
 			let questionContainer = yo`<a-plane id="question" color="#d1fd40" position="0 1.21 -1.5" height="0.4" width="0.8">
         </a-plane>`;
+        	let question = yo`<a-entity id="question-text" bmfont-text="text: ; color:#000000" position="-0.15 -0.1 0" scale="0.8 0.8 0.8"></a-entity>`;
 
         	let camera = document.querySelector('#camera');
+
+        	questionContainer.appendChild(question)
         	camera.appendChild(questionContainer)
 
 			this.question();
@@ -24,10 +27,9 @@ var Game = function() {
 
 	this.question = () => {
 
-		$('#question').empty();
-		let question = yo`<a-entity bmfont-text="text: ${questions[this.step].question}; color:#000000" position="-0.15 -0.1 0" scale="0.8 0.8 0.8"></a-entity>`;
+		let q = document.querySelector('#question-text');
+		q.setAttribute('bmfont-text', `text: ${questions[this.step].question}; color:#000000`);
 
-		$('#question').append(question)
 		let delay = 500
 
 		for (let i = 0; i < questions[this.step].choices.length; i++) {
