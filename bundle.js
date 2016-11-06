@@ -131,6 +131,17 @@ AFRAME.registerComponent('cursor-listener', {
 	}
 });
 
+AFRAME.registerComponent('start-game', {
+	init: function () {
+		this.el.addEventListener('click', function (e) {
+			window.location.href = './';
+		});
+		this.el.addEventListener('mouseenter', function (e) {
+			window.location.href = './';
+		});
+	}
+});
+
 AFRAME.registerComponent('timer', {
 	init: function () {
 		var el = this.el;
