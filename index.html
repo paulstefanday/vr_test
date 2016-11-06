@@ -65,9 +65,10 @@
         				</a-entity>
         			</a-entity>
             </a-entity>
-
           </a-entity>
-          <a-plane width="5.14" height="0.30" position="0.15 0 -1" scale="1 1 1" material="transparent: true"> 
+          <a-plane id="question-response" width="20" height="0.70" position="0.15 -2 -0.9999" scale="1 1 1" material="transparent: true">
+            <a-entity bmfont-text="text: Great!; color:black" position="1.4 -0.05 0" scale="0 0 0"></a-entity>
+            <a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
           </a-plane>
       </a-camera>
 
