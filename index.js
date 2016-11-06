@@ -2,6 +2,7 @@ require('aframe-text-component');
 var Game = require('./game/index.js');
 require('./game/events.js');
 require('./game/animation.js')
+var yo = require('yo-yo')
 var game = new Game();
 
 window.onload = function() {
@@ -25,3 +26,23 @@ AFRAME.registerComponent('clicked', {
 	tick: function( tick ) {
 	}
 });
+
+AFRAME.registerComponent('flapping', {
+  init: function () {
+		let min = 200
+		let max = 400
+		this.el.children[0].setAttribute('visible', false)
+		this.el.children[1].setAttribute('visible', true)
+
+		setInterval(() => {
+			let first = this.el.children[0].getAttribute('visible')
+			if(first === true) {
+				this.el.children[0].setAttribute('visible', false)
+				this.el.children[1].setAttribute('visible', true)
+			} else {
+				this.el.children[1].setAttribute('visible', false)
+				this.el.children[0].setAttribute('visible', true)
+			}
+		}, Math.floor((Math.random()*(max+1))+min));
+  }
+})
