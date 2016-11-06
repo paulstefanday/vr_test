@@ -46,7 +46,7 @@
                from="0 1.5 20"
                to="0 1.5 0"
                repeat="0"></a-animation>
-        
+
          <a-plane id="box"
             geometry="width: 0.6; height: 0.3" material="color: blue"
             position="0 -0.95 -1.3" opacity="0.3">
@@ -62,8 +62,24 @@
         				</a-entity>
         			</a-entity>
             </a-entity>
-
           </a-plane>
+
+          <a-plane id="correct"  visible="false"
+             geometry="width: 100; height: 0.4" material="color: green"
+             position="0 0.1 -1.3" opacity="0.3">
+             <a-entity id="score" position="-1.2 -0.03 0.05">
+               <a-entity bmfont-text="text:Correct!; color:white" position="1.05 0 0" scale="0.5 0.5 0.5"></a-entity>
+             </a-entity>
+           </a-plane>
+
+           <a-plane id="wrong" visible="false"
+              geometry="width: 100; height: 0.4" material="color: red"
+              position="0 0.1 -1.3" opacity="0.3">
+              <a-entity id="score" position="-1.2 -0.03 0.05">
+                <a-entity bmfont-text="text:Opps!; color:white" position="1.05 0 0" scale="0.5 0.5 0.5"></a-entity>
+              </a-entity>
+            </a-plane>
+
 
       </a-camera>
 
