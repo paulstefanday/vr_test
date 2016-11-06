@@ -62,7 +62,7 @@ function addAnimation(el) {
 
 	var animation = function () {
 
-		var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
+		var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
 		var bel0 = document.createElement("a-animation");
 		bel0.setAttribute("attribute", "scale");
 		bel0.setAttribute("dur", "200");
@@ -85,7 +85,7 @@ function leaveAnimation(el) {
 
 	var child = function () {
 
-		var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
+		var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
 		var bel0 = document.createElement("a-animation");
 		bel0.setAttribute("attribute", "scale");
 		bel0.setAttribute("dur", "200");
@@ -140,7 +140,7 @@ AFRAME.registerComponent('timer', {
 
 		var animation = function () {
 
-			var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
+			var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
 			var bel0 = document.createElement("a-animation");
 			bel0.setAttribute("dur", arguments[0]);
 			bel0.setAttribute("attribute", "width");
@@ -151,7 +151,7 @@ AFRAME.registerComponent('timer', {
 		el.appendChild(animation);
 	}
 });
-},{"/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],3:[function(require,module,exports){
+},{"/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],3:[function(require,module,exports){
 var questions = require('./questions');
 var yo = require('yo-yo');
 var sound_correct = new Audio('sound/SCORE.wav');
@@ -169,7 +169,7 @@ var Game = function () {
 
 			var questionContainer = function () {
 
-				var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
+				var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
 				var bel0 = document.createElement("a-plane");
 				bel0.setAttribute("id", "question");
 				bel0.setAttribute("color", "#d1fd40");
@@ -181,7 +181,7 @@ var Game = function () {
 			}();
 			var question = function () {
 
-				var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
+				var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
 				var bel0 = document.createElement("a-entity");
 				bel0.setAttribute("id", "question-text");
 				bel0.setAttribute("bmfont-text", "text: ; color:#000000");
@@ -221,7 +221,7 @@ var Game = function () {
 
 		var entity = function () {
 
-			var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
+			var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
 			var bel8 = document.createElement("a-entity");
 			bel8.setAttribute("flapping", "flapping");
 			var bel3 = document.createElement("a-entity");
@@ -286,7 +286,7 @@ var Game = function () {
 		//3d9fba
 		var timerContainer = function () {
 
-			var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
+			var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
 			var bel0 = document.createElement("a-plane");
 			bel0.setAttribute("id", "timercontainer");
 			bel0.setAttribute("color", "#ffffff");
@@ -297,7 +297,7 @@ var Game = function () {
 		}();
 		var timer = function () {
 
-			var ac = require('/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js');
+			var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
 			var bel0 = document.createElement("a-plane");
 			bel0.setAttribute("timer", "timer");
 			bel0.setAttribute("color", "#ef5a30");
@@ -404,7 +404,7 @@ var Game = function () {
 };
 
 module.exports = Game;
-},{"./questions":4,"/Users/paulday/Sites/aframe-boilerplate/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],4:[function(require,module,exports){
+},{"./questions":4,"/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],4:[function(require,module,exports){
 module.exports = [{
 	question: "5 x 5",
 	choices: [76, 12, 25, 20, 15],
