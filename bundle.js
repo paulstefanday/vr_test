@@ -177,7 +177,7 @@ var Game = function () {
 				var bel0 = document.createElement("a-entity");
 				bel0.setAttribute("id", "question-text");
 				bel0.setAttribute("bmfont-text", "text: ; color:#000000");
-				bel0.setAttribute("position", "-0.15 -0.1 0");
+				bel0.setAttribute("position", "-0.18 -0.1 0");
 				bel0.setAttribute("scale", "0.8 0.8 0.8");
 				return bel0;
 			}();
@@ -313,7 +313,6 @@ var Game = function () {
 
 	this.updateScore = function () {
 		_this.score = _this.score + 1;
-		// console.log(77777, $('#score').children('')[0], this.score)
 		var text = $('#score').children('')[0];
 		$(text).attr('bmfont-text', 'text: ' + _this.score + ' x; color:white');
 	};
@@ -322,6 +321,9 @@ var Game = function () {
 		// Update score if correct
 		if (questions[_this.step].answer === parseInt(value)) _this.updateScore();
 
+		// Update step
+		_this.step++;
+
 		// wipe existing answers && load new answers
 		_this.refresh();
 	};
@@ -329,16 +331,16 @@ var Game = function () {
 	this.refresh = function () {
 		var delay = 200;
 		$('#elements').children('').each(function () {
-			var _this2 = this;
-
-			setTimeout(function () {
-				return $(_this2).remove();
-			}, delay);
-			delay = delay + 200;
+			$(this).remove();
 		});
+
+		// $('#elements').children('').each(function () {
+		// 	setTimeout(() => $(this).remove(), delay);
+		// 	delay = delay + 200;
+		// });
 		setTimeout(function () {
 			return _this.question();
-		}, delay);
+		}, 500);
 	};
 
 	this.position = function () {
