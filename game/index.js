@@ -10,9 +10,9 @@ var Game = function() {
 	this.init = () => {
 		setTimeout(() => {
 
-			let questionContainer = yo`<a-plane id="question" color="#d1fd40" position="0 1.21 -1.5" height="0.4" width="0.8">
+			let questionContainer = yo`<a-plane id="question" color="#d1fd40" position="0 1 -1.5" height="0.28" width="0.8">
         </a-plane>`;
-        	let question = yo`<a-entity id="question-text" bmfont-text="text: ; color:#000000" position="-0.18 -0.1 0" scale="0.8 0.8 0.8"></a-entity>`;
+        	let question = yo`<a-entity id="question-text" bmfont-text="text: ; color:#000000" position="-0.18 -0.03 0" scale="0.8 0.8 0.8"></a-entity>`;
 
         	let camera = document.querySelector('#camera');
 
@@ -67,7 +67,7 @@ var Game = function() {
 	// Sets Timer
 	this.timer = () => {
 		//3d9fba
-		let timerContainer = yo`<a-plane color="#ffffff" position="0 1 -1.5" height="0.05" width="0.8"></a-plane>`;
+		let timerContainer = yo`<a-plane color="#ffffff" position="0 0.85 -1.5" height="0.05" width="0.8"></a-plane>`;
 		let timer = yo`<a-plane timer color="#ef5a30" data-duration="${this.duration}" position="0 0 0" height="0.05" width="0.8"></a-plane>`;
 		let camera = document.querySelector('#camera');
 
