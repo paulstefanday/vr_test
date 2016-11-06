@@ -5,7 +5,7 @@ var Game = function() {
 
 	this.step = 0;
 	this.score = 0;
-	this.duration = 50000;
+	this.duration = 3000;
 
 	this.init = () => {
 		setTimeout(() => {
@@ -74,10 +74,18 @@ var Game = function() {
 		timerContainer.appendChild(timer)
 		camera.appendChild(timerContainer);
 
-		setTimeout(this.result, this.duration + 2000);
+		setTimeout(this.result, 0);
 	}
 
 	this.result = () => {
+		// hide question and score
+		$('#question').attr('visible', 'false')
+		$('#question-text').attr('visible', 'false')
+		$('#box').attr('visible', 'false')
+
+		// show sign
+		let show = yo`<a-animation attribute="position" dur="800" fill="forwards" to="1 -0.25 -2.77" repeat="0"></a-animation>`
+		$('#endfish').appendChild(show)
 
 		console.log("End of the game!");
 	}
