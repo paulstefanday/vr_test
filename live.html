@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, World! - A-Frame</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.6.0/dist/aframe-extras.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <a-scene id="scene">
+      <a-assets>
+        <a-asset-item id="frog-obj" src="models/frog.obj"></a-asset-item>
+        <a-asset-item id="frog-mtl" src="models/frog.mtl"></a-asset-item>
+
+        <a-asset-item id="fly-a-obj" src="models/fly-a.obj"></a-asset-item>
+        <a-asset-item id="fly-a-mtl" src="models/fly-a.mtl"></a-asset-item>
+
+        <a-asset-item id="fly-b-obj" src="models/fly-b.obj"></a-asset-item>
+        <a-asset-item id="fly-b-mtl" src="models/fly-b.mtl"></a-asset-item>
+
+        <a-asset-item id="lilypad-main-obj" src="models/lilypad-main.obj"></a-asset-item>
+        <a-asset-item id="lilypad-main-mtl" src="models/lilypad-main.mtl"></a-asset-item>
+
+        <a-asset-item id="lilypads-scene-obj" src="models/lilypads-scene.obj"></a-asset-item>
+        <a-asset-item id="lilypads-scene-mtl" src="models/lilypads-scene.mtl"></a-asset-item>
+
+        <a-asset-item id="goldfish-obj" src="models/goldfish.obj"></a-asset-item>
+        <a-asset-item id="goldfish-mtl" src="models/goldfish.mtl"></a-asset-item>
+
+        <a-asset-item id="goldfish-sign-obj" src="models/goldfish-sign.obj"></a-asset-item>
+        <a-asset-item id="goldfish-sign-mtl" src="models/goldfish-sign.mtl"></a-asset-item>
+
+        <a-asset-item id="turtle-obj" src="models/turtle.obj"></a-asset-item>
+        <a-asset-item id="turtle-mtl" src="models/turtle.mtl"></a-asset-item>
+
+        <a-asset-item id="clouds-obj" src="models/clouds.obj"></a-asset-item>
+        <audio id="sound-game-music" src="sound/GAME.m4a"></audio>
+        <audio id="sound-attack" src="sound/ATTACK.m4a"></audio>
+        <audio id="sound-eat" src="sound/EATING.m4a"></audio>
+      </a-assets>
+
+
+
+      <!-- goldfish with sign -->
+      <a-entity id="endfish" obj-model="obj: #goldfish-sign-obj; mtl: #goldfish-sign-mtl" position="1 -100.25 -2.77" scale="1 1 1" rotation="-10.31 -39 1.72">
+
+      </a-entity>
+
+      <a-camera id="camera">
+        <a-cursor></a-cursor>
+        <a-animation attribute="position"
+               dur="5000"
+               fill="forwards"
+               from="0 1.5 20"
+               to="0 1.5 0"
+               repeat="0"></a-animation>
+
+         <a-plane id="box"
+            geometry="width: 0.6; height: 0.3" material="color: blue"
+            position="0 -0.8 -1.3" opacity="0.3">
+
+            <a-entity id="score" position="-1.2 0 0.05">
+              <a-entity bmfont-text="text: 0 x; color:white" position="1.05 0 0" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity flapping position="1.3 0 0" scale="0.12 0.12 0.12" rotation="0 20 0">
+        				<a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl"  position="0 0 0" scale="0 0 0" sound="src: #sound-eat; on: click">
+        						<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
+        				</a-entity>
+        				<a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="0.1 0.1 0.1 0.1" scale="0 0 0" sound="src: #sound-eat; on: click">
+        						<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
+        				</a-entity>
+        			</a-entity>
+            </a-entity>
+          </a-plane>
+
+          <a-plane id="correct"  visible="false"
+             geometry="width: 100; height: 0.4" material="color: green"
+             position="0 0.1 -1.3" opacity="0.3">
+             <a-entity id="score" position="-1.2 -0.03 0.05">
+               <a-entity bmfont-text="text:Correct!; color:white" position="1.05 0 0" scale="0.5 0.5 0.5"></a-entity>
+             </a-entity>
+           </a-plane>
+
+           <a-plane id="wrong" visible="false"
+              geometry="width: 100; height: 0.4" material="color: red"
+              position="0 0.1 -1.3" opacity="0.3">
+              <a-entity id="score" position="-1.2 -0.03 0.05">
+                <a-entity bmfont-text="text:Opps!; color:white" position="1.05 0 0" scale="0.5 0.5 0.5"></a-entity>
+              </a-entity>
+            </a-plane>
+
+
+      </a-camera>
+
+      <a-ocean width="50" depth="50" density="40" sound="src: #sound-game-music; autoplay: true; loop: true"></a-ocean>
+
+      <a-entity id="elements"></a-entity>
+
+      <!-- clouds -->
+      <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-50 9 -13" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               dur="40000"
+               fill="forwards"
+               easing="linear"
+               to="40 9 -13"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-40 10 -9" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               begin="6500"
+               dur="70000"
+               fill="forwards"
+               easing="linear"
+               to="40 10 -9"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-40 11 -7" scale="1 1 1" opacity="0.5" rotation="0 0 0">
+        <a-animation attribute="position"
+               begin="8000"
+               dur="40000"
+               fill="forwards"
+               easing="linear"
+               to="40 11 -7"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+
+      <!-- frog -->
+      <a-entity obj-model="obj: #frog-obj; mtl: #frog-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -90 0"></a-entity>
+
+      <!-- goldfish-->
+      <a-entity obj-model="obj: #goldfish-obj; mtl: #goldfish-mtl" position="60 -2.4 -10" scale="1 1 1" rotation="0 -90 0">
+        <a-animation
+               attribute="position"
+               dur="19000"
+               fill="forwards"
+               from="60 -2.4 -10"
+               to="-60 -2.4 -10"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+
+
+      <!-- turtle -->
+      <a-entity obj-model="obj: #turtle-obj; mtl: #turtle-mtl" position="-2.1 -0.08 -2.50" scale="1 1 1" rotation="0 20 0">
+      </a-entity>
+
+      <!-- lilypad -->
+      <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -40 0"></a-entity>
+
+      <!-- lilypad scene  -->
+      <a-entity obj-model="obj: #lilypads-scene-obj; mtl: #lilypads-scene-mtl" position="0 0.1 -10" scale="1 1 1" rotation="0 -40 0">
+        <a-animation
+               attribute="position"
+               dur="2000"
+               direction="alternate-reverse"
+               fill="forwards"
+               from="0 0.1 -10"
+               to="0 0.3 -10"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-entity obj-model="obj: #lilypads-scene-obj; mtl: #lilypads-scene-mtl" position="-15.27 0.1 -14.37" scale="1 1 1" rotation="0 -40 0">
+        <a-animation
+               attribute="position"
+               dur="2000"
+               direction="alternate-reverse"
+               fill="forwards"
+               from="-15.27 0.1 -14.37"
+               to="-15.27 0.3 -14.37"
+               repeat="indefinite"></a-animation>
+      </a-entity>
+
+      <a-sky color="#6CCDEF"></a-sky>
+    </a-scene>
+  </body>
+</html>
