@@ -7,6 +7,7 @@
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.6.0/dist/aframe-extras.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://rawgit.com/bryik/aframe-bmfont-text-component/master/dist/aframe-bmfont-text-component.min.js"></script>
     <script src="index.js"></script>
   </head>
   <body>
@@ -27,6 +28,10 @@
         <a-asset-item id="lilypads-scene-obj" src="models/lilypads-scene.obj"></a-asset-item>
         <a-asset-item id="lilypads-scene-mtl" src="models/lilypads-scene.mtl"></a-asset-item>
 
+        <a-asset-item id="goldfish-obj" src="models/goldfish.obj"></a-asset-item>
+        <a-asset-item id="goldfish-mtl" src="models/goldfish.mtl"></a-asset-item>
+
+        <img id="sky" src="textures/bg.jpg">
         <a-asset-item id="clouds-obj" src="models/clouds.obj"></a-asset-item>
         <audio id="sound-game-music" src="sound/GAME.m4a"></audio>
         <audio id="sound-attack" src="sound/ATTACK.m4a"></audio>
@@ -44,9 +49,24 @@
                repeat="0"></a-animation>
 
 
-         <a-entity id="score" position="-10 -1 -1">
-           <a-entity material="color: white" text="text: '0 x'; size: 0.24" position="0 0 0"></a-entity>
-         </a-entity>
+
+         <a-entity id="box"
+            geometry="primitive: box; width: 2000; height: 0.1" material="color: blue"
+            position="0 -1 -1">
+
+            <a-entity id="score" position="0 0.2 0">
+              <a-entity bmfont-text="text: 0 x; color:white" position="1 0.03 0" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity flapping position="1.3 0 0" scale="0.15 0.15 0.15">
+        				<a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl"  position="0 0 0" scale="0 0 0" sound="src: #sound-eat; on: click">
+        						<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
+        				</a-entity>
+        				<a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="0.1 0.1 0.1 0.1" scale="0 0 0" sound="src: #sound-eat; on: click">
+        						<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
+        				</a-entity>
+        			</a-entity>
+            </a-entity>
+
+          </a-entity>
       </a-camera>
 
       <a-ocean width="50" depth="50" density="40" sound="src: #sound-game-music; autoplay: true; loop: true"></a-ocean>
@@ -86,6 +106,16 @@
       <!-- frog -->
       <a-entity obj-model="obj: #frog-obj; mtl: #frog-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -90 0"></a-entity>
 
+      <!-- goldfish / where the equation is -->
+      <a-entity obj-model="obj: #goldfish-obj; mtl: #goldfish-mtl" position="2.5 -3000.2 -5" scale="1 1 1" rotation="0 -30 0">
+        <a-animation attribute="position"
+                delay="4000"
+               dur="2000"
+               fill="forwards"
+               to="2.5 -1.4 -5"
+               repeat="0"></a-animation>
+      </a-entity>
+
       <!-- lilypad -->
       <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -40 0"></a-entity>
 
@@ -110,7 +140,7 @@
                to="-15.27 0.3 -14.37"
                repeat="indefinite"></a-animation>
       </a-entity>
-      <a-sky color="#6CCDEF"></a-sky>
+      <a-sky color="#6CCDEF" src="#sky"></a-sky>
     </a-scene>
   </body>
 </html>

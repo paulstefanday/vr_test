@@ -1,6 +1,7 @@
 require('aframe-text-component');
 var Game = require('./game/index.js');
 require('./game/events.js');
+require('./game/animation.js')
 var yo = require('yo-yo')
 var game = new Game();
 
@@ -15,20 +16,21 @@ window.onload = function() {
 	}
 }
 
-
 AFRAME.registerComponent('clicked', {
   init: function () {
     this.el.addEventListener('click', function(e) {
       console.log('I was clicked!', e.target.getAttribute('data-choice'));
       game.answer(e.target.getAttribute('data-choice'))
     })
-  }
+  },
+	tick: function( tick ) {
+	}
 });
 
 AFRAME.registerComponent('flapping', {
   init: function () {
-		let min = 100
-		let max = 250
+		let min = 200
+		let max = 400
 		this.el.children[0].setAttribute('visible', false)
 		this.el.children[1].setAttribute('visible', true)
 
