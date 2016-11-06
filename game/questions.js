@@ -25,6 +25,11 @@ module.exports = [
 				answer: 24,
 			},
 			{
+				question: "7 x 7",
+				choices: [49, 59, 50, 39, 42],
+				answer: 49,
+			},
+			{
 				question: "2 x 8",
 				choices: [8, 18, 16, 20, 14],
 				answer: 16,
@@ -48,5 +53,15 @@ module.exports = [
 				question: "6 x 8",
 				choices: [40, 32, 48, 46, 62],
 				answer: 48,
+			},
+			{
+				question: "10 x 4",
+				choices: [40, 22, 30, 5, 18],
+				answer: 40,
+			},
+			{
+				question: "6 x 6",
+				choices: [20, 36, 30, 32, 28],
+				answer: 36,
 			}
 		]
