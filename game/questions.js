@@ -1,17 +1,17 @@
 module.exports = [
 			{
 				question: "5 x 5",
-				choices: [25, 76, 12, 20, 15],
+				choices: [76, 12, 25, 20, 15],
 				answer: 25,
 			},
 			{
 				question: "12 x 3",
-				choices: [36, 33, 42, 28, 23],
+				choices: [33, 36, 42, 28, 23],
 				answer: 36,
 			},
 			{
 				question: "3 x 6",
-				choices: [18, 12, 9, 16, 10],
+				choices: [12, 9, 16, 10, 18],
 				answer: 18,
 			},
 			{
@@ -21,7 +21,7 @@ module.exports = [
 			},
 			{
 				question: "6 x 4",
-				choices: [24, 20, 8, 29, 30],
+				choices: [20, 8, 24, 29, 30],
 				answer: 24,
 			},
 			{
@@ -36,7 +36,7 @@ module.exports = [
 			},
 			{
 				question: "6 x 7",
-				choices: [42, 40, 54, 48],
+				choices: [40, 42, 54, 48],
 				answer: 42,
 			},
 			{
@@ -56,7 +56,7 @@ module.exports = [
 			},
 			{
 				question: "10 x 4",
-				choices: [40, 22, 30, 5, 18],
+				choices: [22, 30, 40, 5, 18],
 				answer: 40,
 			},
 			{

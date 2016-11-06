@@ -1,11 +1,13 @@
 const questions = require('./questions');
 const yo = require('yo-yo');
+var sound_correct = new Audio('../sound/SCORE.wav');
+var sound_wrong = new Audio('../sound/WRONG.wav');
 
 var Game = function() {
 
 	this.step = 0;
 	this.score = 0;
-	this.duration = 60000;
+	this.duration = 3000;
 
 	this.init = () => {
 		setTimeout(() => {
@@ -83,8 +85,15 @@ var Game = function() {
 		$('#question-text').attr('visible', 'false')
 		$('#box').attr('visible', 'false')
 		$('#timercontainer').attr('visible', 'false')
+		$('#elements').attr('visible', 'false')
+		$('#turtle').attr('visible', 'true')
+
+		// update score
+		let text = $('#endfish').children('')[0]
+		$(text).attr('bmfont-text', `text: ${this.score} Points!; color:white`)
 
 		// show sign
+		$('#endfish').attr('visible', 'true')
 		// let show = yo`<a-animation attribute="position" dur="800" fill="forwards" to="1 -0.25 -2.77" repeat="0"></a-animation>`
 		// $('#endfish').appendChild(show)
 
@@ -96,6 +105,7 @@ var Game = function() {
 		let text = $('#score').children('')[0]
 		$(text).attr('bmfont-text', `text: ${this.score} x; color:white`)
 		$('#correct').attr('visible', 'true')
+		sound_correct.play();
 		setTimeout(() => $('#correct').attr('visible', 'false'), 2000)
 	}
 
@@ -104,6 +114,7 @@ var Game = function() {
 		if(questions[this.step].answer === parseInt(value)) this.updateScore()
 		else {
 			$('#wrong').attr('visible', 'true')
+			sound_wrong.play();
 			setTimeout(() => $('#wrong').attr('visible', 'false'), 2000)
 		}
 		// Update step
