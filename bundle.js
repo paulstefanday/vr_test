@@ -53,13 +53,12 @@ AFRAME.registerComponent('animate-fly', {
 });
 },{"yo-yo":11}],2:[function(require,module,exports){
 var yo = require('yo-yo');
+var eatSound = new Audio('../sound/EATING.m4a');
 
 function addAnimation(el) {
 
 	var parent = el.parentElement;
 	var choice = el.getAttribute('data-choice');
-
-	console.log('Choice: ' + choice);
 
 	var animation = function () {
 
@@ -78,13 +77,11 @@ function addAnimation(el) {
 }
 //
 function leaveAnimation(el) {
-	console.log(el);
+	// console.log(el)
 	// el.innerHTML = ''
 
 	var parent = el.parentElement;
 	var choice = el.getAttribute('data-choice');
-
-	console.log('Choice: ' + choice);
 
 	var child = function () {
 
@@ -102,25 +99,34 @@ function leaveAnimation(el) {
 	//el.appendChild(text)
 }
 
+function answerResponse(el) {
+	// console.log(el)
+	// // el.innerHTML = ''
+	// let parent = el.parentElement;
+	// let choice = el.getAttribute('data-choice');
+	// let child = yo`<a-animation attribute="scale" dur="200" fill="forwards" to="1.5 1.5 1.5" repeat="0"></a-animation>`;
+	// //let text = yo`<a-entity material="color: white" text="text: ${choice}; size: 0.3" position="-0.3 0.1 0"></a-entity>`
+	// parent.appendChild(child)
+	// //el.appendChild(text)
+}
+
 AFRAME.registerComponent('cursor-listener', {
 	init: function () {
-		// this.el.addEventListener('click', function (e) {
-		//   console.log('I was clicked!', e.target.getAttribute('data-choice'));
-		// });
+		this.el.addEventListener('click', function (e) {
+			console.log('I was clicked!');
+			eatSound.play();
+		});
 		this.el.addEventListener('mouseenter', function (e) {
-			console.log('Mouse enter!', e.target);
 			addAnimation(e.target);
+			var el_status = document.querySelectorAll('#question-response');
+			answerResponse(el_status);
 		});
 		this.el.addEventListener('mouseleave', function (e) {
-			console.log('Mouse leave!', e.target);
 			leaveAnimation(e.target);
 		});
-		this.el.addEventListener('stateadded', function (evt) {
-			console.log('state added: ', evt.detail.state);
-		});
+		this.el.addEventListener('stateadded', function (evt) {});
 		this.el.addEventListener('stateremoved', function (evt) {
 			if (evt.detail.state === "cursor-hovered") {}
-			console.log('state removed: ', evt.detail.state);
 		});
 	}
 });
@@ -148,6 +154,8 @@ AFRAME.registerComponent('timer', {
 },{"/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],3:[function(require,module,exports){
 var questions = require('./questions');
 var yo = require('yo-yo');
+var sound_correct = new Audio('../sound/SCORE.wav');
+var sound_wrong = new Audio('../sound/WRONG.wav');
 
 var Game = function () {
 	var _this = this;
@@ -326,6 +334,7 @@ var Game = function () {
 		var text = $('#score').children('')[0];
 		$(text).attr('bmfont-text', 'text: ' + _this.score + ' x; color:white');
 		$('#correct').attr('visible', 'true');
+		sound_correct.play();
 		setTimeout(function () {
 			return $('#correct').attr('visible', 'false');
 		}, 2000);
@@ -335,6 +344,7 @@ var Game = function () {
 		// Update score if correct
 		if (questions[_this.step].answer === parseInt(value)) _this.updateScore();else {
 			$('#wrong').attr('visible', 'true');
+			sound_wrong.play();
 			setTimeout(function () {
 				return $('#wrong').attr('visible', 'false');
 			}, 2000);
@@ -390,15 +400,15 @@ module.exports = Game;
 },{"./questions":4,"/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js":13,"yo-yo":11}],4:[function(require,module,exports){
 module.exports = [{
 	question: "5 x 5",
-	choices: [25, 76, 12, 20, 15],
+	choices: [76, 12, 25, 20, 15],
 	answer: 25
 }, {
 	question: "12 x 3",
-	choices: [36, 33, 42, 28, 23],
+	choices: [33, 36, 42, 28, 23],
 	answer: 36
 }, {
 	question: "3 x 6",
-	choices: [18, 12, 9, 16, 10],
+	choices: [12, 9, 16, 10, 18],
 	answer: 18
 }, {
 	question: "7 x 4",
@@ -406,7 +416,7 @@ module.exports = [{
 	answer: 28
 }, {
 	question: "6 x 4",
-	choices: [24, 20, 8, 29, 30],
+	choices: [20, 8, 24, 29, 30],
 	answer: 24
 }, {
 	question: "7 x 7",
@@ -418,7 +428,7 @@ module.exports = [{
 	answer: 16
 }, {
 	question: "6 x 7",
-	choices: [42, 40, 54, 48],
+	choices: [40, 42, 54, 48],
 	answer: 42
 }, {
 	question: "3 x 4",
@@ -434,7 +444,7 @@ module.exports = [{
 	answer: 48
 }, {
 	question: "10 x 4",
-	choices: [40, 22, 30, 5, 18],
+	choices: [22, 30, 40, 5, 18],
 	answer: 40
 }, {
 	question: "6 x 6",
