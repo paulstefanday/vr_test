@@ -35,6 +35,11 @@ module.exports = [
 				answer: 42,
 			},
 			{
+				question: "3 x 4",
+				choices: [12, 16, 10, 6, 8],
+				answer: 12,
+			},
+			{
 				question: "9 x 4",
 				choices: [20, 25, 36, 7, 30],
 				answer: 36,
@@ -43,10 +48,5 @@ module.exports = [
 				question: "6 x 8",
 				choices: [40, 32, 48, 46, 62],
 				answer: 48,
-			},
-			{
-				question: "7 x 4",
-				choices: [29, 16, 28, 46, 32],
-				answer: 28,
 			}
 		]
