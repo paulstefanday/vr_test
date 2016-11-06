@@ -6,7 +6,7 @@
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/0.3.2/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v2.6.0/dist/aframe-extras.min.js"></script>
-    <script src="start.js"></script>
+    <script src="bundle.js"></script>
   </head>
   <body>
     <a-scene id="scene">
@@ -129,7 +129,7 @@
           repeat="0"></a-animation>
       </a-plane>
 
-      <a-box width="2.4" height="0.58" depth="0.02" opacity="0" position="0 0.65 0" material="src: #button_start; repeat: 1 1 ; transparent: false;">
+      <a-box width="2.4" start-game height="0.58" depth="0.02" opacity="0" position="0 0.65 0" material="src: #button_start; repeat: 1 1 ; transparent: false;">
         <a-animation attribute="opacity"
           delay="3400"
           dur="1000"
