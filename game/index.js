@@ -98,6 +98,7 @@ var Game = function() {
 		let text = $('#score').children('')[0]
 		$(text).attr('bmfont-text', `text: ${this.score} x; color:white`)
 		$('#correct').attr('visible', 'true')
+		sound_correct.play();
 		setTimeout(() => $('#correct').attr('visible', 'false'), 2000)
 	}
 
@@ -106,6 +107,7 @@ var Game = function() {
 		if(questions[this.step].answer === parseInt(value)) this.updateScore()
 		else {
 			$('#wrong').attr('visible', 'true')
+			sound_wrong.play();
 			setTimeout(() => $('#wrong').attr('visible', 'false'), 2000)
 		}
 		// Update step
