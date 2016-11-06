@@ -17,9 +17,8 @@ var Game = function() {
 
 	this.question = () => {
 
-		let question = yo`<a-entity question></a-entity>`;
-
-		let questionText = yo`<a-entity position="1 2 -5" material="color: white" text="text: ${questions[this.step].question}; size: 0.24"></a-entity>`
+		let question = yo`<a-entity question position="0 1 -3"></a-entity>`;
+		let questionText = yo`<a-entity material="color: white" text="text: ${questions[this.step].question}; size: 0.24"></a-entity>`
 		
 		question.appendChild(questionText);
 		$('#question').append(question)
@@ -40,16 +39,16 @@ var Game = function() {
 
 		let entity = yo`
 			<a-entity flapping>
-				<a-entity clicked obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" data-choice="${choice}" position="${position.x} ${position.y} ${position.z}" scale="0 0 0" rotation="${rotation.x} ${rotation.y} ${rotation.z}" sound="src: #sound-eat; on: click">
-				<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
-				<a-entity data-choice="${choice}" material="color: white" text="text: ${choice}; size: 0.24" position="-0.2 0.1 0"></a-entity>
-				<a-box data-choice="${choice}" cursor-listener opacity="0"></a-box>
-			</a-entity>
+				<a-entity clicked obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" data-choice="${choice}" position="${position.x} ${position.y - 0.1} ${position.z}" scale="0 0 0" rotation="${rotation.x} ${rotation.y + 5} ${rotation.z - 3}" sound="src: #sound-eat; on: click">
+						<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
+						<a-entity data-choice="${choice}" material="color: white" text="text: ${choice}; size: 0.24" position="-0.2 0.1 0"></a-entity>
+						<a-box data-choice="${choice}" cursor-listener opacity="0"></a-box>
+				</a-entity>
 
-			<a-entity clicked obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" data-choice="${choice}" position="${position.x} ${position.y} ${position.z}" scale="0 0 0" rotation="${rotation.x} ${rotation.y} ${rotation.z}" sound="src: #sound-eat; on: click">
-				<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
-				<a-entity data-choice="${choice}" material="color: white" text="text: ${choice}; size: 0.24" position="-0.2 0.1 0"></a-entity>
-				<a-box data-choice="${choice}" cursor-listener opacity="0"></a-box>
+				<a-entity clicked obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" data-choice="${choice}" position="${position.x} ${position.y + 0.1} ${position.z}" scale="0 0 0" rotation="${rotation.x} ${rotation.y -5} ${rotation.z + 3}" sound="src: #sound-eat; on: click">
+						<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
+						<a-entity data-choice="${choice}" material="color: white" text="text: ${choice}; size: 0.24" position="-0.2 0.1 0"></a-entity>
+						<a-box data-choice="${choice}" cursor-listener opacity="0"></a-box>
 				</a-entity>
 			</a-entity>`;
 
@@ -105,13 +104,11 @@ var Game = function() {
 	}
 
 	this.rotation = (position) => {
-
 		let rotation = {
 			x: this.getRand(-5, 5),
 			y: position.x * -8,
 			z: this.getRand(-5, 5),
 		}
-
 		return rotation;
 	}
 
