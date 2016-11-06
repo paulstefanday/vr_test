@@ -29,15 +29,14 @@ function leaveAnimation(el) {
 }
 
 function answerResponse(el) {
-	console.log(el)
-	// el.innerHTML = ''
-	debugger;
-	let parent = el.parentElement;
-	let choice = el.getAttribute('data-choice');
-	let child = yo`<a-animation attribute="scale" dur="200" fill="forwards" to="1.5 1.5 1.5" repeat="0"></a-animation>`;
-	//let text = yo`<a-entity material="color: white" text="text: ${choice}; size: 0.3" position="-0.3 0.1 0"></a-entity>`
-	parent.appendChild(child)
-	//el.appendChild(text)
+	// console.log(el)
+	// // el.innerHTML = ''
+	// let parent = el.parentElement;
+	// let choice = el.getAttribute('data-choice');
+	// let child = yo`<a-animation attribute="scale" dur="200" fill="forwards" to="1.5 1.5 1.5" repeat="0"></a-animation>`;
+	// //let text = yo`<a-entity material="color: white" text="text: ${choice}; size: 0.3" position="-0.3 0.1 0"></a-entity>`
+	// parent.appendChild(child)
+	// //el.appendChild(text)
 }
 
 
