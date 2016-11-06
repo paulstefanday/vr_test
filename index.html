@@ -48,13 +48,14 @@
                to="0 1.5 0"
                repeat="0"></a-animation>
 
-
+        <a-plane id="question" color="#d1fd40" position="0 1.21 -1.5" height="0.5" width="1">
+        </a-plane>
 
          <a-plane id="box"
-            geometry="width: 0.7; height: 0.35" material="color: blue"
-            position="-1.8 1 -1.3" opacity="0.3">
+            geometry="width: 0.6; height: 0.3" material="color: blue"
+            position="0 -0.95 -1.3" opacity="0.3">
 
-            <a-entity id="score" position="-1.1 -0.1 0.05">
+            <a-entity id="score" position="-1.2 0 0.05">
               <a-entity bmfont-text="text: 0 x; color:white" position="1.05 0 0" scale="0.5 0.5 0.5"></a-entity>
               <a-entity flapping position="1.3 0 0" scale="0.12 0.12 0.12" rotation="0 20 0">
         				<a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl"  position="0 0 0" scale="0 0 0" sound="src: #sound-eat; on: click">
@@ -66,8 +67,8 @@
         			</a-entity>
             </a-entity>
           </a-entity>
-          <a-plane id="question-response" width="20" height="0.70" position="0.15 -2 -0.9999" scale="1 1 1" material="transparent: true">
-            <a-entity bmfont-text="text: Great!; color:black" position="1.4 -0.05 0" scale="0 0 0"></a-entity>
+          <a-plane id="question-response" width="20" height="0.70" position="0.15 1 -0.9999" scale="1 1 1">
+            <a-entity bmfont-text="text: Great!; color:black" position="1.4 0 -1" scale="0 0 0"></a-entity>
             <a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
           </a-plane>
       </a-camera>
@@ -115,6 +116,7 @@
                attribute="position"
                dur="19000"
                fill="forwards"
+               from="60 -2.4 -10"
                to="-60 -2.4 -10"
                repeat="indefinite"></a-animation>
       </a-entity>
