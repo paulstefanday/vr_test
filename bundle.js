@@ -162,7 +162,7 @@ var Game = function () {
 
 	this.step = 0;
 	this.score = 0;
-	this.duration = 3000;
+	this.duration = 30000;
 
 	this.init = function () {
 		setTimeout(function () {
