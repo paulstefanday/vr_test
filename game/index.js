@@ -94,17 +94,12 @@ var Game = function() {
 		this.score = this.score + 1
 		let text = $('#score').children('')[0]
 		$(text).attr('bmfont-text', `text: ${this.score} x; color:white`)
-		$('#correct').attr('visible', 'true')
-		setTimeout(() => $('#correct').attr('visible', 'false'), 2000)
 	}
 
 	this.answer = (value) => {
 		// Update score if correct
 		if(questions[this.step].answer === parseInt(value)) this.updateScore()
-		else {
-			$('#wrong').attr('visible', 'true')
-			setTimeout(() => $('#wrong').attr('visible', 'false'), 2000)
-		}
+
 		// Update step
 		this.step++
 
@@ -117,6 +112,11 @@ var Game = function() {
 		$('#elements').children('').each(function () {
 			 $(this).remove()
 		 })
+
+		// $('#elements').children('').each(function () {
+		// 	setTimeout(() => $(this).remove(), delay);
+		// 	delay = delay + 200;
+		// });
 		setTimeout(() => this.question(), 500);
 	}
 
