@@ -34,6 +34,9 @@
         <a-asset-item id="goldfish-sign-obj" src="models/goldfish-sign.obj"></a-asset-item>
         <a-asset-item id="goldfish-sign-mtl" src="models/goldfish-sign.mtl"></a-asset-item>
 
+        <a-asset-item id="turtle-obj" src="models/turtle.obj"></a-asset-item>
+        <a-asset-item id="turtle-mtl" src="models/turtle.mtl"></a-asset-item>
+
         <a-asset-item id="clouds-obj" src="models/clouds.obj"></a-asset-item>
         <audio id="sound-game-music" src="sound/GAME_2.wav"></audio>
         <audio id="sound-attack" src="sound/ATTACK.m4a"></audio>
@@ -137,6 +140,10 @@
                repeat="indefinite"></a-animation>
       </a-entity>
 
+
+      <!-- turtle -->
+      <a-entity obj-model="obj: #turtle-obj; mtl: #turtle-mtl" position="-2.1 -0.08 -2.50" scale="1 1 1" rotation="0 20 0">
+      </a-entity>
 
       <!-- lilypad -->
       <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -40 0"></a-entity>
