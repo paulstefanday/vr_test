@@ -7,7 +7,7 @@ var Game = function() {
 
 	this.step = 0;
 	this.score = 0;
-	this.duration = 60000;
+	this.duration = 3000;
 
 	this.init = () => {
 		setTimeout(() => {
@@ -86,6 +86,7 @@ var Game = function() {
 		$('#box').attr('visible', 'false')
 		$('#timercontainer').attr('visible', 'false')
 		$('#elements').attr('visible', 'false')
+		$('#turtle').attr('visible', 'true')
 
 		// update score
 		let text = $('#endfish').children('')[0]
