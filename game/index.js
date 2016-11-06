@@ -59,8 +59,11 @@ var Game = function() {
 	// Sets Timer
 	this.timer = () => {
 
-		let timer = yo`<a-box timer color="tomato" data-duration="${this.duration}" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-box>`;
+		let timerContainer = yo`<a-plane color="#ffffff" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-plane>`;
+		let timer = yo`<a-plane timer color="tomato" data-duration="${this.duration}" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-plane>`;
 		let scene = document.querySelector('#scene');
+
+		scene.appendChild(timerContainer);
 		scene.appendChild(timer);
 
 		setTimeout(this.result, this.duration + 2000);
