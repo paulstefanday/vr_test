@@ -17,18 +17,19 @@ var Game = function() {
 
 	this.question = () => {
 
-		let question 
-		let questionText = yo`<a-entity position="1 2 -5" material="color: white" text="text: '${questions[this.step].question}'; size: 0.24"></a-entity>`
+		let question = yo`<a-entity question></a-entity>`;
+
+		let questionText = yo`<a-entity position="1 2 -5" material="color: white" text="text: ${questions[this.step].question}; size: 0.24"></a-entity>`
 		
-		$('#question').append(questionText)
+		question.appendChild(questionText);
+		$('#question').append(question)
+
 		let delay = 500
 
 		for (let i = 0; i < questions[this.step].choices.length; i++) {
 			this.choice(questions[this.step].choices[i], delay);
 			delay = delay + 500
     	}
-
-
 	}
 
 	this.choice = (choice, delay) => {
