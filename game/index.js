@@ -9,6 +9,13 @@ var Game = function() {
 
 	this.init = () => {
 		setTimeout(() => {
+
+			let questionContainer = yo`<a-plane id="question" color="#d1fd40" position="0 1.21 -1.5" height="0.4" width="0.8">
+        </a-plane>`;
+
+        	let camera = document.querySelector('#camera');
+        	camera.appendChild(questionContainer)
+
 			this.question();
 			this.timer();
 
@@ -17,10 +24,9 @@ var Game = function() {
 
 	this.question = () => {
 
-		let question = yo`<a-entity question position="0 1 -3"></a-entity>`;
-		let questionText = yo`<a-entity material="color: white" text="text: ${questions[this.step].question}; size: 0.24"></a-entity>`
+		$('#question').empty();
+		let question = yo`<a-entity bmfont-text="text: ${questions[this.step].question}; color:#000000" position="-0.15 -0.1 0" scale="0.8 0.8 0.8"></a-entity>`;
 
-		question.appendChild(questionText);
 		$('#question').append(question)
 		let delay = 500
 
@@ -52,19 +58,19 @@ var Game = function() {
 			</a-entity>`;
 
 			setTimeout(function() {
-				scene.appendChild(entity)
+				scene.appendChild(entity);
 			}, delay);
 	}
 
 	// Sets Timer
 	this.timer = () => {
+		//3d9fba
+		let timerContainer = yo`<a-plane color="#ffffff" position="0 1 -1.5" height="0.05" width="0.8"></a-plane>`;
+		let timer = yo`<a-plane timer color="#ef5a30" data-duration="${this.duration}" position="0 0 0" height="0.05" width="0.8"></a-plane>`;
+		let camera = document.querySelector('#camera');
 
-		let timerContainer = yo`<a-plane color="#ffffff" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-plane>`;
-		let timer = yo`<a-plane timer color="tomato" data-duration="${this.duration}" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-plane>`;
-		let scene = document.querySelector('#scene');
-
-		//scene.appendChild(timerContainer);
-		//scene.appendChild(timer);
+		timerContainer.appendChild(timer)
+		camera.appendChild(timerContainer);
 
 		setTimeout(this.result, this.duration + 2000);
 	}

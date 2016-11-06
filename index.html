@@ -38,7 +38,7 @@
       </a-assets>
 
 
-      <a-camera>
+      <a-camera id="camera">
         <a-cursor></a-cursor>
         <a-animation attribute="position"
                dur="5000"
@@ -47,8 +47,13 @@
                to="0 1.5 0"
                repeat="0"></a-animation>
         
-        <a-plane id="question" color="#d1fd40" position="0 1.21 -1.5" height="0.5" width="1">
+        <!-- <a-plane id="question" color="#d1fd40" position="0 1.21 -1.5" height="0.4" width="0.8">
+        </a-plane> -->
+<!--         <a-plane color="#ef5a30" position="0 1 -1.5" height="0.05" width="0.8">
+            <a-plane id="question" color="#000000" position="0 0 0" height="0.05" width="0.8">
+            </a-plane>
         </a-plane>
+ -->
 
          <a-plane id="box"
             geometry="width: 0.6; height: 0.3" material="color: blue"
@@ -73,8 +78,6 @@
       <a-ocean width="50" depth="50" density="40" sound="src: #sound-game-music; autoplay: true; loop: true"></a-ocean>
 
       <a-entity id="elements"></a-entity>
-
-      <a-entity id="question" position="1 1 1"></a-entity>
 
       <!-- clouds -->
       <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-50 9 -13" scale="1 1 1" opacity="0.5" rotation="0 0 0">
