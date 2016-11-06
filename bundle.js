@@ -171,8 +171,20 @@ var Game = function () {
 				ac(bel0, ["\n        "]);
 				return bel0;
 			}();
+			var question = function () {
+
+				var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
+				var bel0 = document.createElement("a-entity");
+				bel0.setAttribute("id", "question-text");
+				bel0.setAttribute("bmfont-text", "text: ; color:#000000");
+				bel0.setAttribute("position", "-0.15 -0.1 0");
+				bel0.setAttribute("scale", "0.8 0.8 0.8");
+				return bel0;
+			}();
 
 			var camera = document.querySelector('#camera');
+
+			questionContainer.appendChild(question);
 			camera.appendChild(questionContainer);
 
 			_this.question();
@@ -182,18 +194,9 @@ var Game = function () {
 
 	this.question = function () {
 
-		$('#question').empty();
-		var question = function () {
+		var q = document.querySelector('#question-text');
+		q.setAttribute('bmfont-text', 'text: ' + questions[_this.step].question + '; color:#000000');
 
-			var ac = require('/Users/valais/Sites/vr-test.dev/node_modules/yo-yoify/lib/appendChild.js');
-			var bel0 = document.createElement("a-entity");
-			bel0.setAttribute("bmfont-text", "text: " + arguments[0] + "; color:#000000");
-			bel0.setAttribute("position", "-0.15 -0.1 0");
-			bel0.setAttribute("scale", "0.8 0.8 0.8");
-			return bel0;
-		}(questions[_this.step].question);
-
-		$('#question').append(question);
 		var delay = 500;
 
 		for (var i = 0; i < questions[_this.step].choices.length; i++) {
