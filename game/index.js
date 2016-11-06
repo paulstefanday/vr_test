@@ -1,18 +1,20 @@
 const questions = require('./questions');
 const yo = require('yo-yo');
+var sound_correct = new Audio('../sound/SCORE.m4a');
+var sound_wrong = new Audio('../sound/WRONG.m4a');
 
 var Game = function() {
 
 	this.step = 0;
 	this.score = 0;
-	this.duration = 30000;
+	this.duration = 50000;
 
 	this.init = () => {
 		setTimeout(() => {
 
-			let questionContainer = yo`<a-plane id="question" color="#d1fd40" position="0 1.21 -1.5" height="0.4" width="0.8">
+			let questionContainer = yo`<a-plane id="question" color="#d1fd40" position="0 1 -1.5" height="0.28" width="0.8">
         </a-plane>`;
-        	let question = yo`<a-entity id="question-text" bmfont-text="text: ; color:#000000" position="-0.15 -0.1 0" scale="0.8 0.8 0.8"></a-entity>`;
+        	let question = yo`<a-entity id="question-text" bmfont-text="text: ; color:#000000" position="-0.18 -0.03 0" scale="0.8 0.8 0.8"></a-entity>`;
 
         	let camera = document.querySelector('#camera');
 
@@ -67,7 +69,7 @@ var Game = function() {
 	// Sets Timer
 	this.timer = () => {
 		//3d9fba
-		let timerContainer = yo`<a-plane color="#ffffff" position="0 1 -1.5" height="0.05" width="0.8"></a-plane>`;
+		let timerContainer = yo`<a-plane color="#ffffff" position="0 0.85 -1.5" height="0.05" width="0.8"></a-plane>`;
 		let timer = yo`<a-plane timer color="#ef5a30" data-duration="${this.duration}" position="0 0 0" height="0.05" width="0.8"></a-plane>`;
 		let camera = document.querySelector('#camera');
 
@@ -86,12 +88,17 @@ var Game = function() {
 		this.score = this.score + 1
 		let text = $('#score').children('')[0]
 		$(text).attr('bmfont-text', `text: ${this.score} x; color:white`)
+		$('#correct').attr('visible', 'true')
+		setTimeout(() => $('#correct').attr('visible', 'false'), 2000)
 	}
 
 	this.answer = (value) => {
 		// Update score if correct
 		if(questions[this.step].answer === parseInt(value)) this.updateScore()
-
+		else {
+			$('#wrong').attr('visible', 'true')
+			setTimeout(() => $('#wrong').attr('visible', 'false'), 2000)
+		}
 		// Update step
 		this.step++
 
@@ -104,11 +111,6 @@ var Game = function() {
 		$('#elements').children('').each(function () {
 			 $(this).remove()
 		 })
-
-		// $('#elements').children('').each(function () {
-		// 	setTimeout(() => $(this).remove(), delay);
-		// 	delay = delay + 200;
-		// });
 		setTimeout(() => this.question(), 500);
 	}
 

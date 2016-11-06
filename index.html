@@ -49,24 +49,37 @@
                repeat="0"></a-animation>
          <a-plane id="box"
             geometry="width: 0.6; height: 0.3" material="color: blue"
-            position="0 -0.95 -1.3" opacity="0.3">
+            position="0 -0.8 -1.3" opacity="0.3">
 
             <a-entity id="score" position="-1.2 0 0.05">
               <a-entity bmfont-text="text: 0 x; color:white" position="1.05 0 0" scale="0.5 0.5 0.5"></a-entity>
               <a-entity flapping position="1.3 0 0" scale="0.12 0.12 0.12" rotation="0 20 0">
-        				<a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl"  position="0 0 0" scale="0 0 0" sound="src: #sound-eat; on: click">
+        				<a-entity obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl"  position="0 0 0" scale="0 0 0">
         						<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
         				</a-entity>
-        				<a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="0.1 0.1 0.1 0.1" scale="0 0 0" sound="src: #sound-eat; on: click">
+        				<a-entity obj-model="obj: #fly-b-obj; mtl: #fly-b-mtl" position="0.1 0.1 0.1 0.1" scale="0 0 0">
         						<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
         				</a-entity>
         			</a-entity>
             </a-entity>
-          </a-entity>
-          <!-- <a-plane id="question-response" width="20" height="0.70" position="0.15 1 -0.9999" scale="1 1 1">
-            <a-entity bmfont-text="text: Great!; color:black" position="1.4 0 -1" scale="0 0 0"></a-entity>
-            <a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
-          </a-plane> -->
+          </a-plane>
+
+          <a-plane id="correct"  visible="false"
+             geometry="width: 100; height: 0.4" material="color: green"
+             position="0 0.1 -1.3" opacity="0.3">
+             <a-entity id="score" position="-1.2 -0.03 0.05">
+               <a-entity bmfont-text="text:Correct!; color:white" position="1.05 0 0" scale="0.5 0.5 0.5"></a-entity>
+             </a-entity>
+           </a-plane>
+
+           <a-plane id="wrong" visible="false"
+              geometry="width: 100; height: 0.4" material="color: red"
+              position="0 0.1 -1.3" opacity="0.3">
+              <a-entity id="score" position="-1.2 -0.03 0.05">
+                <a-entity bmfont-text="text:Opps!; color:white" position="1.05 0 0" scale="0.5 0.5 0.5"></a-entity>
+              </a-entity>
+            </a-plane>
+
       </a-camera>
 
       <a-ocean width="50" depth="50" density="40" sound="src: #sound-game-music; autoplay: true; loop: true"></a-ocean>
@@ -119,7 +132,7 @@
       <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -40 0"></a-entity>
 
       <!-- lilypad scene  -->
-      <a-entity obj-model="obj: #lilypads-scene-obj; mtl: #lilypads-scene-mtl" position="0 0.1 -10" scale="1 1 1" rotation="0 -40 0">
+      <a-entity obj-model="obj: #lilypads-scene-obj; mtl: #lilypads-scene-mtl" position="0 0.1 -10" scale="1 1 1" rotation="0 -40 0" sound="src: #sound-eat; on: click">
         <a-animation
                attribute="position"
                dur="2000"
