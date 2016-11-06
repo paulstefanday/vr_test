@@ -17,19 +17,20 @@ var Game = function() {
 
 	this.question = () => {
 
-		let questionText = yo`<a-entity material="color: white" text="text: '${questions[this.step].question}'; size: 0.24"></a-entity>`
-		$('question').append(questionText)
+		let question
+		let questionText = yo`<a-entity position="1 2 -5" material="color: white" text="text: '${questions[this.step].question}'; size: 0.24"></a-entity>`
+
+		$('#question').append(questionText)
+		let delay = 500
 
 		for (let i = 0; i < questions[this.step].choices.length; i++) {
-			this.choice(questions[this.step].choices[i]);
-    }
-
-
+			this.choice(questions[this.step].choices[i], delay);
+			delay = delay + 500
+  	}
 	}
 
-	this.choice = (choice) => {
+	this.choice = (choice, delay) => {
 
-		let delay = 500
 		let position = this.position();
 		let rotation = this.rotation(position);
 		let scene = document.querySelector('#elements');
@@ -52,8 +53,6 @@ var Game = function() {
 			setTimeout(function() {
 				scene.appendChild(entity)
 			}, delay);
-
-			delay = delay + 500
 	}
 
 	// Sets Timer
@@ -63,22 +62,18 @@ var Game = function() {
 		let scene = document.querySelector('#scene');
 		scene.appendChild(timer);
 
-		setTimeout(function() {
-
-			this.result();
-		}, this.duration + 2000);
+		setTimeout(this.result, this.duration + 2000);
 	}
 
 	this.result = () => {
 
+		console.log("End of the game!");
 	}
 
 	this.answer = (value) => {
 		console.log(91919191, value)
 		if(questions[this.step].answer === value) {
 			this.score = this.score++
-
-			// visualise fly
 		}
 		this.step++
 
