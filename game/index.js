@@ -102,10 +102,14 @@ var Game = function() {
 	this.refresh = () => {
 	  let delay = 200
 		$('#elements').children('').each(function () {
-			setTimeout(() => $(this).remove(), delay);
-			delay = delay + 200;
-		});
-		setTimeout(() => this.question(), delay);
+			 $(this).remove()
+		 })
+
+		// $('#elements').children('').each(function () {
+		// 	setTimeout(() => $(this).remove(), delay);
+		// 	delay = delay + 200;
+		// });
+		setTimeout(() => this.question(), 500);
 	}
 
 	this.position = () => {
