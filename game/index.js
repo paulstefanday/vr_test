@@ -74,12 +74,16 @@ var Game = function() {
 		console.log("End of the game!");
 	}
 
+	this.updateScore = () => {
+		this.score = this.score + 1
+		// console.log(77777, $('#score').children('')[0], this.score)
+		let text = $('#score').children('')[0]
+		$(text).attr('bmfont-text', `text: ${this.score} x; color:white`)
+	}
+
 	this.answer = (value) => {
-		console.log(91919191, value)
-		if(questions[this.step].answer === value) {
-			this.score = this.score++
-		}
-		this.step++
+		// Update score if correct
+		if(questions[this.step].answer === parseInt(value)) this.updateScore()
 
 		// wipe existing answers && load new answers
 		this.refresh()
