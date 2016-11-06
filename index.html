@@ -31,6 +31,9 @@
         <a-asset-item id="goldfish-obj" src="models/goldfish.obj"></a-asset-item>
         <a-asset-item id="goldfish-mtl" src="models/goldfish.mtl"></a-asset-item>
 
+        <a-asset-item id="goldfish-sign-obj" src="models/goldfish-sign.obj"></a-asset-item>
+        <a-asset-item id="goldfish-sign-mtl" src="models/goldfish-sign.mtl"></a-asset-item>
+
         <a-asset-item id="clouds-obj" src="models/clouds.obj"></a-asset-item>
         <audio id="sound-game-music" src="sound/GAME.m4a"></audio>
         <audio id="sound-attack" src="sound/ATTACK.m4a"></audio>
@@ -129,6 +132,11 @@
                repeat="indefinite"></a-animation>
       </a-entity>
 
+      <!-- goldfish with sign -->
+      <a-entity obj-model="obj: #goldfish-sign-obj; mtl: #goldfish-sign-mtl" position="1 -0.25 -2.77" scale="1 1 1" rotation="-10.31 -39 1.72">
+
+      </a-entity>
+
       <!-- lilypad -->
       <a-entity obj-model="obj: #lilypad-main-obj; mtl: #lilypad-main-mtl" position="0 0.3 1" scale="1 1 1" rotation="0 -40 0"></a-entity>
 
@@ -153,6 +161,7 @@
                to="-15.27 0.3 -14.37"
                repeat="indefinite"></a-animation>
       </a-entity>
+
       <a-sky color="#6CCDEF"></a-sky>
     </a-scene>
   </body>
