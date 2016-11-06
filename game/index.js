@@ -5,26 +5,39 @@ var Game = function() {
 
 	this.step = 0;
 	this.score = 0;
+	this.duration = 30000;
 
 	this.init = () => {
 		setTimeout(() => {
 			this.question();
+			this.timer();
+
 		}, 3000);
 	}
 
 	this.question = () => {
 
-		let questionText = yo`<a-entity material="color: white" text="text: '${questions[this.step].question}'; size: 0.24"></a-entity>`
-		$('question').append(questionText)
-		let scene = document.querySelector('#elements');
+		let question
+		let questionText = yo`<a-entity position="1 2 -5" material="color: white" text="text: '${questions[this.step].question}'; size: 0.24"></a-entity>`
+
+		$('#question').append(questionText)
 		let delay = 500
 
 		for (let i = 0; i < questions[this.step].choices.length; i++) {
+			this.choice(questions[this.step].choices[i], delay);
+			delay = delay + 500
+    	}
 
-			let position = this.position();
-			let rotation = this.rotation(position);
-			let choice = questions[this.step].choices[i];
-			let entity = yo`
+
+	}
+
+	this.choice = (choice, delay) => {
+
+		let position = this.position();
+		let rotation = this.rotation(position);
+		let scene = document.querySelector('#elements');
+
+		let entity = yo`
 			<a-entity flapping>
 				<a-entity clicked obj-model="obj: #fly-a-obj; mtl: #fly-a-mtl" data-choice="${choice}" position="${position.x} ${position.y - 0.1} ${position.z}" scale="0 0 0" rotation="${rotation.x} ${rotation.y + 5} ${rotation.z - 3}" sound="src: #sound-eat; on: click">
 						<a-animation attribute="scale" dur="200" fill="forwards" to="1 1 1" repeat="0"></a-animation>
@@ -42,10 +55,21 @@ var Game = function() {
 			setTimeout(function() {
 				scene.appendChild(entity)
 			}, delay);
-			delay = delay + 500
-			console.log('Added Question');
-    }
+	}
 
+	// Sets Timer
+	this.timer = () => {
+
+		let timer = yo`<a-box timer color="tomato" data-duration="${this.duration}" position="0 1 -1.5" depth="0.05" height="0.1" width="2"></a-box>`;
+		let scene = document.querySelector('#scene');
+		scene.appendChild(timer);
+
+		setTimeout(this.result, this.duration + 2000);
+	}
+
+	this.result = () => {
+
+		console.log("End of the game!");
 	}
 
 	this.answer = (value) => {
