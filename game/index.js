@@ -7,7 +7,7 @@ var Game = function() {
 
 	this.step = 0;
 	this.score = 0;
-	this.duration = 30000;
+	this.duration = 60000;
 
 	this.init = () => {
 		setTimeout(() => {

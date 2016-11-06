@@ -21,7 +21,9 @@
         <img src="/textures/button_start.png" id="button_start" crossorigin="anonymous">
         <img src="/textures/title_card.png" id="title_card" crossorigin="anonymous">
         <img src="/textures/instructions.png" id="instructions" crossorigin="anonymous">
-        
+
+        <audio id="sound-intro-music" src="sound/menu.mp3"></audio>
+
       </a-assets>
 
 
@@ -41,7 +43,7 @@
                repeat="0"></a-animation>
       </a-camera>
 
-      <a-ocean width="50" depth="50" density="40"></a-ocean>
+      <a-ocean width="50" depth="50" density="40" sound="src: #sound-intro-music; autoplay: true; loop: true"></a-ocean>
 
       <!-- clouds -->
       <a-entity obj-model="obj: #clouds-obj" opacity="0.5" position="-50 9 -13" scale="1 1 1" opacity="0.5" rotation="0 0 0">
